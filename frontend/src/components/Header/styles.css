@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+}
+
+.navbar {
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background-color: gray;
+  position: sticky;
+  top: 0;
+}
+:root {
+  --gray: #dcdede;
+}
+
+.navbar-logo {
+  height: 2rem;
+}
+.subSearchBar {
+  display: flex;
+  justify-content: center;
+}
+
+/* .search-bar {
+  display: flex;
+  justify-content: center;
+} */
+
+.searchResult {
+  overflow: visible;
+}
+
+.input {
+  padding: 8px 64px;
+  font-size: 1rem;
+  border-radius: 2rem;
+  border: 1px solid rgb(200, 198, 198);
+  outline: none;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  background-color: #fe424d;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+.profile-container {
+  display: flex;
+  align-items: center;
+}
+.profile-container a {
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px;
+  color: black;
+}
+
+.profile-container a:hover {
+  background-color: rgb(236, 238, 239);
+  border-radius: 0.5rem;
+}
+
+.bottom-nav {
+  display: none;
+}
+
+/* @media screen and (max-width: 800px){
+
+} */
+
+@media screen and (max-width: 800px) {
+  .bottom-nav {
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 1px solid var(--gray);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  }
+  /* .profile-container {
+    display: none;
+  } */
+  /* .navbar-logo {
+    display: none;
+  } */
+
+  .input {
+    /* padding: 2vh 10vh; */
+    font-size: 1rem;
+    border-radius: 2rem;
+    outline: none;
+  }
+
+  .searchButton {
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #fe424d;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.dropdown-menu {
+  width: 27rem;
+  margin-top: 0.5rem !important;
+  border-radius: 1rem;
+}
+.dropdown-item {
+  padding: 10px 30px;
+}
+.dropdown-item:hover {
+  background-color: #efefef;
+  border-radius: 2px;
+}

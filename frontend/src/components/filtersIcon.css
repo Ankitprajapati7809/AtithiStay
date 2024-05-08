@@ -1,0 +1,18 @@
+.filters {
+    display: flex;
+
+ }
+
+.filter{
+text-align: center;
+margin-left: 1rem;
+opacity: 0.5;
+}
+
+.filter:hover{
+    opacity: 1;
+}
+.link-style{
+    text-decoration: none;
+    color: black;
+}
