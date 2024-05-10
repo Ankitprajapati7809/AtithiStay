@@ -8,17 +8,9 @@ router.post(
   "/login", userController.loginUser
 );
 
-router.get("/logout", (req, resp, next) => {
-  // console.log(req);
-
-  req.logout((err) => {
-    if (err) {
-     return next(err);
-    }
-    console.log("you logged out! ");
-    // resp.send("succesfully logout!")
-  });
-  // console.log(req.user);
+router.get("/logout", (req, resp) => {
+    resp.clearCookie("authToken")
+ return resp.send("succesfully logout!")
 
 });
 

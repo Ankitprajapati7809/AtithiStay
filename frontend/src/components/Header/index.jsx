@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../../assets/logo/long-logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Axios from "axios";
 
 function Header() {
   const [searchInput, setSearchInput] = useState("");
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const user = true;
+  const user = false;
   const handelSearchInput = async (e) => {
     setSearchInput(e.target.value);
   };
@@ -53,7 +53,6 @@ function Header() {
 
   const handelLogout = async () => {
     const response = await Axios.get("http://localhost:5000/logout");
-    setIsAuthenticated(false);
     console.log(response.data);
     navigate("/listing");
   };

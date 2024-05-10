@@ -4,11 +4,15 @@ const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 const listingContainer = require("../controllers/listingController.js")
-// const {isLogin} = require("../middlewares.js")
+const {authenticateJWT} = require("../middlewares.js")
 
 router.get("/", listingContainer.index);
 
-router.get("/", listingContainer.renderAddNewForm)
+// router.get("/user", (req, resp)=>{
+
+// }) 
+
+router.get("/verify", authenticateJWT, listingContainer.renderAddNewForm)
 
 router.post("/", upload.single("image"), listingContainer.addedNewListing);
 

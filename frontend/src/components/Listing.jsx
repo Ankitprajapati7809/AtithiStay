@@ -49,6 +49,7 @@ function Listing() {
               alt="green iguana"
             />
             <p>{listing.description}</p>
+            <p>{listing.description}</p>
             <p>&#8377;{listing.price}/night</p>
             <p>{listing.location}</p>
             <p>{listing.country}</p>

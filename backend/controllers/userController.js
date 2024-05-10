@@ -36,7 +36,7 @@ module.exports.registerUser = async (req, res) => {
 
 };
 
-module.exports.loginUser = async(req, res) => {
+module.exports.loginUser = async(req, res, next) => {
   const { username, password } = req.body;
   console.log(username, password);
 
@@ -65,6 +65,6 @@ module.exports.loginUser = async(req, res) => {
     secure: true,
     sameSite: "strict",
   });
-
+  
   res.json("Login successful");
 };
