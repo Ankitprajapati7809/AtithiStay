@@ -18,6 +18,10 @@ const listingSchema = new schema({
   url: String,
   filename: String,
  },
+ owner: {
+  type: String,
+  required: true,
+ },
  price: {
   type: Number,
   default: 1500,

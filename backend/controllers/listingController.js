@@ -8,7 +8,7 @@ module.exports.index = async (req, resp) => {
 
 module.exports.renderAddNewForm = (req, resp) => {
   console.log("Reached after authentication!");
-  console.log(req.user);
+  // resp.status(200).json(req.user);
 };
 
 module.exports.addedNewListing = async (req, resp) => {

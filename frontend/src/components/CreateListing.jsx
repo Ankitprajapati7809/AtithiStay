@@ -48,12 +48,18 @@ const CreateListing = () => {
   };
 
   const getForm = async () => {
-    await Axios.get("http://localhost:5000/listing/verify", {
-      withCredentials: true,
-    }).then((res) => {
+    await Axios.get("http://localhost:5000/listing/verify",{withCredentials: true})
+    .then((res)=>{
+      // console.log("*********************************")
       // console.log(res);
+
+      })
+     .catch((err)=>{
+      // console.log("=================================")
+      // console.log(err)
       navigate("/login");
-    });
+     }) 
+
   };
 
   useEffect(() => {

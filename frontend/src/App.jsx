@@ -11,7 +11,6 @@ import Listings from "./components/Listing";
 import Edit from "./components/Edit";
 import SearchComponent from "./components/Header/SearchComponent";
 import Axios from "axios";
-import CurrentUser from "./components/currUser";
 
 // import './App.css'
 function App() {
@@ -37,7 +36,6 @@ function App() {
 
   return (
     <>
-        <CurrentUser/>
         <Header />
         <Routes>
           <Route exact path="/listing" element={<Cards />} />

@@ -63,8 +63,9 @@ module.exports.loginUser = async(req, res, next) => {
     maxAge: 1800000,
     httpOnly: true,
     secure: true,
-    sameSite: "strict",
+    // sameSite: "strict",
   });
   
   res.json("Login successful");
+  
 };
