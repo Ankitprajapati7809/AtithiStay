@@ -2,19 +2,33 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../../assets/logo/long-logo.png";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 
 function Header() {
   const [searchInput, setSearchInput] = useState("");
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const user = false;
+  const [user, setUser] = useState(null);
   const handelSearchInput = async (e) => {
     setSearchInput(e.target.value);
   };
+  // Axios.defaults.withCredentials = true;
 
+  // const getUser = async()=>{
+  //   await Axios.get("http://localhost:5000/checkAuth")
+  //     .then((resp) => {
+  //       // console.log(resp.data);
+  //        setUser(resp.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };   
 
+  // useEffect(()=>{
+  //   getUser();
+  // },[])
 
   const getresult = async () => {
     await Axios.get("http://localhost:5000/listing")

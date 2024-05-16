@@ -10,18 +10,18 @@ router.get("/", listingContainer.index);
 
 // router.get("/user", (req, resp)=>{
 
-// }) 
+// })  
 
 router.get("/verify", authenticateJWT, listingContainer.renderAddNewForm)
 
-router.post("/", upload.single("image"), listingContainer.addedNewListing);
+router.post("/", authenticateJWT, upload.single("image"), listingContainer.addedNewListing);
 
 router.get("/:id", listingContainer.showListing);
 
-router.get("/:id/edit", listingContainer.renderEditForm);
+router.get("/:id/edit", authenticateJWT, listingContainer.renderEditForm);
 
 router.patch("/:id/edit", upload.single("image"), listingContainer.updateListing);
 
-router.delete("/:id", listingContainer.deleteListing);
+router.delete("/:id", authenticateJWT, listingContainer.deleteListing);
 
 module.exports = router; 

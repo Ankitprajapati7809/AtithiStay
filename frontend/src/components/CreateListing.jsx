@@ -29,7 +29,7 @@ const CreateListing = () => {
       e.preventDefault();
       e.stopPropagation();
     }
-    setValidated(true);
+    setValidated(true); 
     try {
       const response = await Axios.post(
         "http://localhost:5000/listing",
@@ -38,9 +38,11 @@ const CreateListing = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          withCredentials: true
         }
       );
       navigate("/listing");
+      console.log("111111111111111")
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -73,7 +75,7 @@ const CreateListing = () => {
         onSubmit={handelSubmit}
         encType="multipart/form-data"
         // noValidate
-        validated={validated}
+        validated={validated ? 'true' : undefined}
       >
         <h2 className="mt-3">Add new listing</h2>
         <div className="mb-3 mt-3 ">

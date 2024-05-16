@@ -24,9 +24,12 @@ app.use("/search", searchRoutes);
 app.use("/", userRoutes);
 
 
-// app.get("/checkauth", (req, res, next)=>{
+// app.get("/checkauth", (req, res)=>{
 //   console.log("..........................")
 //   const token = req.cookies.authToken;
+//   // console.log(token)
+//   res.send(token);
+ 
 //   if (!token) {
 //     return res.status(403).json({ error: "Unauthorized. No token provided." });
 //   }
@@ -40,7 +43,7 @@ app.use("/", userRoutes);
 //   } 
 // })  
 
-
+ 
 
 
 

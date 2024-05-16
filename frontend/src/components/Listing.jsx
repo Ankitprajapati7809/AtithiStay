@@ -16,9 +16,11 @@ function Listing() {
   const { id } = useParams();
   const getListing = async () => {
     try {
-      await Axios.get(`http://localhost:5000/listing/${id}`).then((response) => {
-        setListing(response.data);
-      });
+      await Axios.get(`http://localhost:5000/listing/${id}`).then(
+        (response) => {
+          setListing(response.data);
+        }
+      );
     } catch (error) {
       console.error("error fetching listing : ", error);
     }
@@ -29,10 +31,17 @@ function Listing() {
 
   const navigate = useNavigate();
   const handelDelete = async (id) => {
-    await Axios.delete(`http://localhost:5000/listing/${id}`).then((response) => {
-      navigate("/listing");
-      console.log(response.data);
-    });
+    try {
+      await Axios.delete(`http://localhost:5000/listing/${id}`, {
+        withCredentials: true,
+      }).then((response) => {
+        console.log("00000000000000000000000000");
+        navigate("/listing");
+        console.log(response.data);
+      });
+    } catch (error) {
+      console.log(error.response.data)
+    }
   };
 
   return (

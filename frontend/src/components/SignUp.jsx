@@ -1,5 +1,6 @@
 import  Axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -8,13 +9,15 @@ const SignUp = () => {
     password: "",
   });
 
+  Axios.defaults.withCredentials = true;
+ const navigate = useNavigate();
   const handelChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
 
     try {
       const response = await Axios.post("http://localhost:5000/signup", data, {
@@ -22,7 +25,9 @@ const SignUp = () => {
           "Content-Type": "application/json",
         },
       });
-      console.log(response.data);
+      navigate("/listing");
+      // console.log(response.data);
+      
     } catch (error) {
       console.error("An error occurred:", error);
     }

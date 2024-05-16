@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
-function checkauth() {
-  return (
-    <div>checkauth</div>
-  )
-}
+// function checkauth() {
+//   return (
+//     <div>checkauth</div>
+//   )
+// }
 
-export default checkauth
+// export default checkauth
