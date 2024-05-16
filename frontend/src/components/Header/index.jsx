@@ -13,22 +13,22 @@ function Header() {
   const handelSearchInput = async (e) => {
     setSearchInput(e.target.value);
   };
-  // Axios.defaults.withCredentials = true;
+  Axios.defaults.withCredentials = true;
 
-  // const getUser = async()=>{
-  //   await Axios.get("http://localhost:5000/checkAuth")
-  //     .then((resp) => {
-  //       // console.log(resp.data);
-  //        setUser(resp.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };   
+  const getUser = async()=>{
+    await Axios.get("http://localhost:5000/checkAuth")
+      .then((resp) => {
+        // console.log(resp.data);
+         setUser(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };   
 
-  // useEffect(()=>{
-  //   getUser();
-  // },[])
+  useEffect(()=>{
+    getUser();
+  },[])
 
   const getresult = async () => {
     await Axios.get("http://localhost:5000/listing")

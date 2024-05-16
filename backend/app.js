@@ -3,8 +3,6 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");       
 const cookieParser = require("cookie-parser"); 
-const jwt = require('jsonwebtoken');
-const JWT_SECRET = "sdfgh56774sdfg"
 const userRoutes = require("./routes/userRoute.js")
 const listingRoutes = require("./routes/listingRoute.js")
 const searchRoutes = require("./routes/searchRoute.js")       
@@ -23,30 +21,12 @@ app.use("/listing", listingRoutes);
 app.use("/search", searchRoutes);
 app.use("/", userRoutes);
 
-
-// app.get("/checkauth", (req, res)=>{
-//   console.log("..........................")
-//   const token = req.cookies.authToken;
-//   // console.log(token)
-//   res.send(token);
- 
-//   if (!token) {
-//     return res.status(403).json({ error: "Unauthorized. No token provided." });
-//   }
-//   try {
-//     console.log("Aa gya bhi");
-//     const decoded = jwt.verify(token, JWT_SECRET);
-//     req.user = decoded; 
-//     res.status(200).send(req.user);
-//   } catch (error) {
-//     return res.status(401).json({ error: "Unauthorized. Invalid token." });
-//   } 
-// })  
-
- 
-
-
-
+app.get("/checkauth", (req, res)=>{
+  console.log("..........................")
+  const token = req.cookies.authToken;
+  // console.log(token)
+  res.send(token);
+})  
 
 app.listen(5000, function () {
   console.log("Server is running on port 5000...");
