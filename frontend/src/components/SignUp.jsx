@@ -1,6 +1,7 @@
 import  Axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { showSuccessMessage, showErrorMessage } from "./flashMessages";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -26,7 +27,7 @@ const SignUp = () => {
         },
       });
       navigate("/listing");
-      // console.log(response.data);
+      showSuccessMessage("You are successfully registed!");
       
     } catch (error) {
       console.error("An error occurred:", error);

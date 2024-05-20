@@ -8,6 +8,9 @@ import Cards from "./components/cards";
 import Listings from "./components/Listing";
 import Edit from "./components/Edit";
 import SearchComponent from "./components/Header/SearchComponent";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // import './App.css'
 
 function App() {
@@ -25,6 +28,7 @@ function App() {
       </Routes>
 
       {/* <BottomNavigation /> */}
+      <ToastContainer />
     </>
   );
 }

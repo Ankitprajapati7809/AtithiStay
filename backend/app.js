@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/userRoute.js")
 const listingRoutes = require("./routes/listingRoute.js")
 const searchRoutes = require("./routes/searchRoute.js")       
-  
+const reviewRoutes = require("./routes/reviewRoute.js")  
 app.use(cookieParser()); 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -15,14 +15,15 @@ app.use(
     origin: ["http://localhost:5173"],
     credentials: true,
   })
-);  
+);   
 
 app.use("/listing", listingRoutes);
 app.use("/search", searchRoutes);
 app.use("/", userRoutes);
+app.use("/", reviewRoutes);
 
 app.get("/checkauth", (req, res)=>{
-  console.log("..........................")
+  // console.log("..........................")
   const token = req.cookies.authToken;
   // console.log(token)
   res.send(token);

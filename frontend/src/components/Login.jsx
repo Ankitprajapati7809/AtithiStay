@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import Header from "./Header";
+import { showSuccessMessage, showErrorMessage } from "./flashMessages";
 
 const Login = () => {
+
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -24,7 +26,8 @@ const Login = () => {
     )  
       .then((res)=>{
         navigate("/listing")
-      console.log(res.data);
+      // console.log(res.data);
+      showSuccessMessage(res.data)
       })
       .catch((err)=>{
         console.log(err)

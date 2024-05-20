@@ -91,5 +91,5 @@ module.exports.loginUser = async (req, res, next) => {
     // sameSite: "strict",
   });
 
-  res.json("Login successful");
+  res.json("Login successfull");
 };

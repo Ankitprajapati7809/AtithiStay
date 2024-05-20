@@ -3,6 +3,7 @@ import "./styles.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../../assets/logo/long-logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import { showSuccessMessage, showErrorMessage } from "../flashMessages";
 import Axios from "axios";
 
 function Header() {
@@ -67,7 +68,7 @@ function Header() {
 
   const handelLogout = async () => {
     const response = await Axios.get("http://localhost:5000/logout");
-    console.log(response.data);
+    showSuccessMessage(response.data)
     navigate("/listing");
   };
 

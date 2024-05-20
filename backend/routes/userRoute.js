@@ -10,7 +10,7 @@ router.post(
 
 router.get("/logout", (req, resp) => {
     resp.clearCookie("authToken")
- return resp.send("succesfully logout!")
+ return resp.send("Logout succesfully! ")
 
 });
 
