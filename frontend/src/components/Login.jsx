@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 // import Header from "./Header";
 import { showSuccessMessage, showErrorMessage } from "./flashMessages";
 
@@ -15,7 +15,7 @@ const Login = () => {
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     try {
     await Axios.post("http://localhost:5000/login"
     , data,{
@@ -26,7 +26,7 @@ const Login = () => {
     )  
       .then((res)=>{
         navigate("/listing")
-      // console.log(res.data);
+      console.log(res.data);
       showSuccessMessage(res.data)
       })
       .catch((err)=>{
@@ -44,10 +44,11 @@ const Login = () => {
 
   return (
     <>
-      <div className="container">
-        <form onSubmit={handelSubmit} className="signup offset-3 mt-5">
+      <div className="container col-xs-5 offset-sm-2 col-sm-6 offset-md-3 col-md-6 offset-lg-3 col-lg-4 ">
+        <form onSubmit={handelSubmit} className="login  mt-5 col-xs-6 "
+        style={{backgroundColor: "#e9ecef", padding: 40, borderRadius: 10, border: "black"}}>
           <h2>Login</h2>
-          <div className="mb-3 col-6">
+          <div className="mb-3 mt-3">
             <input
               type="text"
               className="form-control"
@@ -59,7 +60,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="mb-3 col-6">
+          <div className="mb-3 ">
             <input
               type="password"
               className="form-control"
@@ -71,9 +72,11 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark col-12 mt-2">
             Login
           </button>
+          <p className="mt-2 text-center">New to Atithistay?<Link style={{textDecoration: 'none'}} to="/signup"> Signup</Link></p> 
+
         </form>
       </div>
     </>

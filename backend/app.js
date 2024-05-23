@@ -15,7 +15,7 @@ app.use(
     origin: ["http://localhost:5173"],
     credentials: true,
   })
-);   
+);    
 
 app.use("/listing", listingRoutes);
 app.use("/search", searchRoutes);
@@ -25,11 +25,11 @@ app.use("/", reviewRoutes);
 app.get("/checkauth", (req, res)=>{
   // console.log("..........................")
   const token = req.cookies.authToken;
-  // console.log(token)
+  console.log(token)
   res.send(token);
-})  
+})   
 
 app.listen(5000, function () {
   console.log("Server is running on port 5000...");
 }); 
- 
+  

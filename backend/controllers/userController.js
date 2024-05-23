@@ -61,9 +61,9 @@ module.exports.registerUser = async (req, res) => {
   }
 };
 
-module.exports.loginUser = async (req, res, next) => {
+module.exports.loginUser = async (req, res) => {
   const { username, password } = req.body;
-  console.log(username, password);
+  // console.log(username, password);
 
   const user = await User.findOne({ username: username });
   if (!user) {
@@ -73,7 +73,7 @@ module.exports.loginUser = async (req, res, next) => {
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
-    return res.status(402).json({ error: "Invalid email or password" });
+    return res.status(402).json({ error: "password" });
   }
 
   // Create a JWT token with the user's ID and a secret key

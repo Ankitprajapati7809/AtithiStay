@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreateListing = () => {
   const [validated, setValidated] = useState(false);
+  const [loading, setLoading] = useState(false); 
   const [listingData, setListingData] = useState({
     title: "",
     description: "",
@@ -31,6 +32,7 @@ const CreateListing = () => {
     }
     setValidated(true); 
     try {
+      setLoading(true);
       const response = await Axios.post(
         "http://localhost:5000/listing",
         listingData,
@@ -44,8 +46,10 @@ const CreateListing = () => {
       navigate("/listing");
       console.log("111111111111111")
       console.log(response.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -165,8 +169,8 @@ const CreateListing = () => {
           />
           <div className="invalid-feedback">Please provide a location.</div>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="btn btn-primary col-12 " disabled={loading}>
+          {loading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
     </div>

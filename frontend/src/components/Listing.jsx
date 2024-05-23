@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Card, CardMedia, Paper } from "@mui/material";
-import { showSuccessMessage, showErrorMessage, showInfoMessage } from "./flashMessages";
+import {
+  showSuccessMessage,
+  showErrorMessage,
+  showInfoMessage,
+} from "./flashMessages";
 
 import "./Listing.css";
 function Listing() {
-
-  // const handleError = () => {
-  //   showErrorMessage("Something went wrong.");
-  // };
-
   const [listing, setListing] = useState({
     image: { url: "" },
     title: "",
@@ -68,7 +67,6 @@ function Listing() {
       setuserReview({ review: "", rating: "3" });
       getListing();
       showSuccessMessage("Review added successfully!");
-
     });
   };
   const handelChange = (e) => {
@@ -93,7 +91,6 @@ function Listing() {
               (review) => review._id !== reviewId
             ),
           }));
-          showSuccessMessage("Review deleted successfully!");   
         } else {
           console.error(
             "Failed to update the review after successful deletion"
@@ -101,14 +98,18 @@ function Listing() {
         }
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error.response.data)
     }
+    showErrorMessage("Sorry, you don't have permission to delete this review.");
   };
 
   return (
     <>
-      <div className="container ">
-        <div className=" offset-3 col-6">
+      <div className="container  ">
+        <div
+          className="offset-xs-1 col-xs-6 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 "
+       
+        >
           <Card sx={{ px: 1.5, boxShadow: "none" }}>
             <h2>{listing.title}</h2>
             <CardMedia
@@ -129,97 +130,101 @@ function Listing() {
                 handelDelete(id);
               }}
               type="button"
-              className="btn btn-danger"
+              className="btn btn-danger col-6 rounded-end-0"
             >
               Delete
             </button>
             <Link to={`/listing/${id}/edit`}>
-              <button type="button" className="btn btn-dark ">
+              <button
+                type="button"
+                className="btn btn-dark col-6 rounded-start-0 "
+              >
                 Edit
               </button>
             </Link>
           </Card>
         </div>
-        <div className="review-container col-7 offset-3 ">
+        <div className="review-container offset-xs-1 col-xs-6 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6">
           <hr />
-          <h3>Leave a review</h3>
-          <fieldset className="starability-slot">
-            <p>Rating:</p>
-            <input
-              type="radio"
-              id="first-rate1"
-              name="rating"
-              value="1"
+          <div>
+            <h3>Leave a review</h3>
+            <fieldset className="starability-slot">
+              <p>Rating:</p>
+              <input
+                type="radio"
+                id="first-rate1"
+                name="rating"
+                value="1"
+                onChange={handelChange}
+              />
+              <label htmlFor="first-rate1" title="Terrible">
+                1 star
+              </label>
+              <input
+                type="radio"
+                id="first-rate2"
+                name="rating"
+                value="2"
+                onChange={handelChange}
+              />
+              <label htmlFor="first-rate2" title="Not good">
+                2 stars
+              </label>
+              <input
+                type="radio"
+                id="first-rate3"
+                name="rating"
+                value="3"
+                onChange={handelChange}
+              />
+              <label htmlFor="first-rate3" title="Average">
+                3 stars
+              </label>
+              <input
+                type="radio"
+                id="first-rate4"
+                name="rating"
+                value="4"
+                onChange={handelChange}
+              />
+              <label htmlFor="first-rate4" title="Very good">
+                4 stars
+              </label>
+              <input
+                type="radio"
+                id="first-rate5"
+                name="rating"
+                value="5"
+                onChange={handelChange}
+              />
+              <label htmlFor="first-rate5" title="Amazing">
+                5 stars
+              </label>
+            </fieldset>
+            <br />
+            <p>Comments</p>
+            <textarea
+              className="form-control mb-3"
+              name="review"
+              value={userReview.review}
               onChange={handelChange}
-            />
-            <label htmlFor="first-rate1" title="Terrible">
-              1 star
-            </label>
-            <input
-              type="radio"
-              id="first-rate2"
-              name="rating"
-              value="2"
-              onChange={handelChange}
-            />
-            <label htmlFor="first-rate2" title="Not good">
-              2 stars
-            </label>
-            <input
-              type="radio"
-              id="first-rate3"
-              name="rating"
-              value="3"
-              onChange={handelChange}
-            />
-            <label htmlFor="first-rate3" title="Average">
-              3 stars
-            </label>
-            <input
-              type="radio"
-              id="first-rate4"
-              name="rating"
-              value="4"
-              onChange={handelChange}
-            />
-            <label htmlFor="first-rate4" title="Very good">
-              4 stars
-            </label>
-            <input
-              type="radio"
-              id="first-rate5"
-              name="rating"
-              value="5"
-              onChange={handelChange}
-            />
-            <label htmlFor="first-rate5" title="Amazing">
-              5 stars
-            </label>
-          </fieldset>
-          <br />
-          <p>Comments</p>
-          <textarea
-            className="form-control mb-3"
-            name="review"
-            value={userReview.review}
-            onChange={handelChange}
-          ></textarea>
-          <button
-            onClick={handelSubmit}
-            type="button"
-            className="btn btn-dark "
-          >
-            Submit
-          </button>
-          <hr />
-          <h6 style={{ marginLeft: "15px" }}>All Reviews</h6>
-
-          <div className="row mb-3 ">
+            ></textarea>
+            <button
+              onClick={handelSubmit}
+              type="button"
+              className="btn btn-dark "
+            >
+              Submit
+            </button>
+            <hr />
+            <h6 style={{ marginLeft: "15px" }}>All Reviews</h6>
+          </div>
+          <div className=" row mb-3  ">
             {listing.reviews.map((review, index) => {
               return (
                 <Paper
                   variant="outlined"
-                  className=" col-5 mt-3"
+                  className="review col-10 col-md-5 mt-3"
                   key={index}
                   style={{ marginLeft: "20px" }}
                 >
@@ -231,18 +236,13 @@ function Listing() {
                         className="starability-result"
                         data-rating={review.rating}
                       >
-                        {review.rating} stars
+                        {review.rating}
+                        
                       </p>
                     </h6>
                     <p>{review.review}</p>
 
-                    <button
-                      onClick={() => deleteReview(review._id)}
-                      type="button"
-                      className="btn btn-dark btn-sm "
-                    >
-                      Delete
-                    </button>
+                    <button onClick={() => deleteReview(review._id)} type="button" className="btn  btn-sm mb-1 " >Delete</button>
                   </div>
                 </Paper>
               );

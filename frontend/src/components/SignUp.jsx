@@ -1,6 +1,6 @@
 import  Axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { showSuccessMessage, showErrorMessage } from "./flashMessages";
 
 const SignUp = () => {
@@ -36,10 +36,11 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="container">
-        <form onSubmit={handelSubmit} className="signup offset-3 mt-5">
+      <div className="container col-xs-5 offset-sm-2 col-sm-6 offset-md-3 col-md-6 offset-lg-3 col-lg-4">
+        <form onSubmit={handelSubmit} className="signup mt-5 col-xs-6 "
+        style={{backgroundColor: "#e9ecef", padding: 40, borderRadius: 10, border: "black"}}>
           <h2>Sign up</h2>
-          <div className="mb-3 col-6">
+          <div className="mb-3 mt-3">
             <input
               type="text"
               className="form-control"
@@ -50,7 +51,7 @@ const SignUp = () => {
               name="username"
             />
           </div>
-          <div className="mb-3 col-6">
+          <div className="mb-3 ">
             <input
               type="email"
               className="form-control"
@@ -61,7 +62,7 @@ const SignUp = () => {
               name="email"
             />
           </div>
-          <div className="mb-3 col-6">
+          <div className="mb-3 ">
             <input
               type="password"
               className="form-control"
@@ -73,9 +74,10 @@ const SignUp = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark col-12 mt-2">
             Sign up
           </button>
+         <p className="mt-2 text-center">Already on Atithistay?<Link style={{textDecoration: 'none'}} to="/login"> Login</Link></p> 
         </form>
       </div>
     </>

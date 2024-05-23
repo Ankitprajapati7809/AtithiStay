@@ -10,8 +10,9 @@ import Edit from "./components/Edit";
 import SearchComponent from "./components/Header/SearchComponent";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import  {Footer} from "./components/Footer/footer";
 
-// import './App.css'
+import './App.css'
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/search" element={<SearchComponent />} />
       </Routes>
-
+      <Footer/>   
       {/* <BottomNavigation /> */}
       <ToastContainer />
     </>
