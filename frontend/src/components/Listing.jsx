@@ -53,7 +53,13 @@ function Listing() {
         console.log(response.data);
       });
     } catch (error) {
-      console.log(error.response.data);
+      if (error.response.status === 403) {
+        showInfoMessage("First, login before deleting the Listing.");
+      } else if (error.response.status === 405) {
+        showErrorMessage(
+          "You can't delete this Listing because you're not the owner."
+        );
+      }
     }
   };
 
@@ -85,12 +91,15 @@ function Listing() {
         // navigate("/listing");
         // console.log(response.request.status);
         if (response.request.status === 200) {
-          setListing((prevListing) => ({
-            ...prevListing,
-            reviews: prevListing.reviews.filter(
-              (review) => review._id !== reviewId
-            ),
-          }));
+          setListing(
+            (prevListing) => ({
+              ...prevListing,
+              reviews: prevListing.reviews.filter(
+                (review) => review._id !== reviewId
+              ),
+            }),
+            showSuccessMessage("Review Deleted successfully!")
+          );
         } else {
           console.error(
             "Failed to update the review after successful deletion"
@@ -98,18 +107,21 @@ function Listing() {
         }
       });
     } catch (error) {
-      // console.log(error.response.data)
+      // console.log(error);
+      if (error.response.status === 403) {
+        showInfoMessage("First, login before deleting the Review.");
+      } else if (error.response.status === 405) {
+        showErrorMessage(
+          "You can't delete this review because you're not the owner."
+        );
+      }
     }
-    showErrorMessage("Sorry, you don't have permission to delete this review.");
   };
 
   return (
     <>
       <div className="container  ">
-        <div
-          className="offset-xs-1 col-xs-6 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 "
-       
-        >
+        <div className="offset-xs-1 col-xs-6 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 ">
           <Card sx={{ px: 1.5, boxShadow: "none" }}>
             <h2>{listing.title}</h2>
             <CardMedia
@@ -237,12 +249,17 @@ function Listing() {
                         data-rating={review.rating}
                       >
                         {review.rating}
-                        
                       </p>
                     </h6>
                     <p>{review.review}</p>
 
-                    <button onClick={() => deleteReview(review._id)} type="button" className="btn  btn-sm mb-1 " >Delete</button>
+                    <button
+                      onClick={() => deleteReview(review._id)}
+                      type="button"
+                      className="btn  btn-sm mb-1 "
+                    >
+                      Delete
+                    </button>
                   </div>
                 </Paper>
               );

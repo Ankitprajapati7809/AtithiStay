@@ -64,7 +64,7 @@ module.exports.renderEditForm = async (req, resp) => {
         .status(402)
         .json({
           error:
-            "You are not the owner. So, that you can not edit this listing.",
+            "You have not access to Edit.",
         });
     }
     resp.send(getListing);
@@ -86,7 +86,8 @@ module.exports.updateListing = async (req, resp) => {
       message: "Listing is edited successfully",
     });
   } catch (error) {
-    console.log(error);
+    console.log("backend",error);
+
   }
 };
 
@@ -100,7 +101,7 @@ module.exports.deleteListing = async (req, resp) => {
     const listing = await Listing.findById(id);
     if (req.user.userId !== listing.owner) {
       return resp
-        .status(403)
+        .status(405)
         .json({
           error: "You can not delete! you are not the owner of this listing.",
         });

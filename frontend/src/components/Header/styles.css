@@ -138,3 +138,10 @@ body {
   background-color: #efefef;
   border-radius: 2px;
 }
+
+/* Hide the element on larger screens */
+.btn-dark-xs-sm {
+  display: none;
+}
+
+

@@ -35,9 +35,9 @@ router.delete(
     const getReview = await Review.findById(reviewId);
     console.log(getReview.reviewOwner);
     if (req.user.userId !== getReview.reviewOwner.toString()) {
-      return resp.status(403).json({
+      return resp.status(405).json({
         error:
-          "You are not the owner. So, that you can not Delete this Review.",
+          "You can't delete this review because you're not the owner.",
       });
     }
     await Review.findByIdAndDelete(reviewId);

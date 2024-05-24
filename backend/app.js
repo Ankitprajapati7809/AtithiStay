@@ -29,6 +29,11 @@ app.get("/checkauth", (req, res)=>{
   res.send(token);
 })   
 
+app.all("*", (req, resp)=>{
+  resp.send("page not found")
+})
+
+
 app.listen(5000, function () {
   console.log("Server is running on port 5000...");
 }); 

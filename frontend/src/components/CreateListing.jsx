@@ -73,9 +73,8 @@ const CreateListing = () => {
   }, []);
 
   return (
-    <div className="container ">
+    <div className="container offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 ">
       <form
-        className="offset-3 col-6 "
         onSubmit={handelSubmit}
         encType="multipart/form-data"
         // noValidate
@@ -169,7 +168,7 @@ const CreateListing = () => {
           />
           <div className="invalid-feedback">Please provide a location.</div>
         </div>
-        <button type="submit" className="btn btn-primary col-12 " disabled={loading}>
+        <button type="submit" className="btn btn-dark col-12 mb-5" disabled={loading}>
           {loading ? 'Submitting...' : 'Submit'}
         </button>
       </form>

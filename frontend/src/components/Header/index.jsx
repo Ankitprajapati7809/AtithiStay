@@ -70,9 +70,9 @@ function Header() {
   };
 
   const handelLogout = async () => {
-    const response = await Axios.get("http://localhost:5000/logout");
-    showSuccessMessage(response.data);
-    navigate("/listing");
+    // const response = await Axios.get("http://localhost:5000/logout");
+    // showSuccessMessage(response.data);
+    // navigate("/listing");
   };
 
   return (
@@ -113,7 +113,7 @@ function Header() {
               <Link className="nav-link" to="/addNew">Atithistay your home</Link>
               {user ? (
                 <>
-                  <button onClick={handelLogout} className="btn">
+                  <button onClick={handelLogout} className="btn ">
                    <b>Logout</b> 
                   </button>
                 </>
@@ -125,8 +125,8 @@ function Header() {
               )}
             </div>
           </div>
-          {/* <div className="search-bar "> */}
-          {/* <div className="subSearchBar dropdown "> */}
+          {/* <div className="search-bar ">
+          <div className="subSearchBar dropdown "> */}
 
           {/* <button onClick={handelSearchSubmit} className="searchButton">
               <SearchIcon />
@@ -144,8 +144,8 @@ function Header() {
                 </li>
               ))}
             </ul> */}
-          {/* </div> */}
-          {/* </div> */}
+          {/* </div>
+          </div> */}
           {/* <div className="profile-container">
             <Link to="/addNew">Airbnb your home</Link>
             {user ? (

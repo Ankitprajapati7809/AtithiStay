@@ -1,6 +1,12 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import {
+  showSuccessMessage,
+  showErrorMessage,
+  showInfoMessage,
+} from "./flashMessages";
+
 function Edit() {
   const [edit, setEdit] = useState({
     title: "",
@@ -11,6 +17,8 @@ function Edit() {
     country: "",
     location: "",
   });
+  const [loading, setLoading] = useState(false); 
+
 
   const { id } = useParams();
   const getData = async () => {
@@ -21,7 +29,7 @@ function Edit() {
           withCredentials: true,
         }
       );
-
+      //  console.log(response)
       setEdit((prevState) => ({
         ...prevState,
         title: response.data.title,
@@ -33,11 +41,12 @@ function Edit() {
       }));
     } catch (error) {
       if (error.response.request.status === 403) {
-        console.log(error.response)
-
+        showInfoMessage("First, login before Editing the listing.")
         navigate("/login");
       } else {
-        console.log(error.response.data)
+        if(error.request.status === 402){
+          showInfoMessage(error.response.data.error)
+        }
         navigate(`/listing/${id}`);
       }
     }
@@ -71,6 +80,7 @@ function Edit() {
         formData.append("image", edit.image);
         console.log(edit.image);
       }
+      setLoading(true);
 
       await Axios.patch(`http://localhost:5000/listing/${id}/edit`, formData, {
         headers: {
@@ -79,9 +89,13 @@ function Edit() {
         withCredentials: true,
       });
       // console.log(response.data);
+      showSuccessMessage("You have successfully Edited.")
+      setLoading(false);
       navigate("/listing");
     } catch (error) {
       console.log(error);
+      setLoading(false);
+
     }
   };
   return (
@@ -184,8 +198,8 @@ function Edit() {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="btn btn-dark col-12 mb-5" disabled={loading}>
+        {loading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
     </div>
