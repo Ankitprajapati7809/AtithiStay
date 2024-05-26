@@ -15,106 +15,107 @@ import "./filtersIcon.css";
 import { Link } from "react-router-dom";
 function FiltersIcon() {
   return (
-    <>
-      <div className="filters">
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <WhatshotIcon />
-            </div>
-            <p>Trending</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <BedIcon />
-            </div>
-            <p>Rooms</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <HouseboatIcon />
-            </div>
-            <p>Boathouse</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <PoolIcon />
-            </div>
-            <p>Amazing pools</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <AgricultureIcon />
-            </div>
-            <p>Farm</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <BeachAccessIcon />
-            </div>
-            <p>Beach</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <CastleIcon />
-            </div>
-            <p>Castles</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <ForestIcon />
-            </div>
-            <p>Tropical</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <DownhillSkiingIcon />
-            </div>
-            <p>Ski-in/out</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <ApartmentIcon />
-            </div>
-            <p>Iconic Cities</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <AcUnitIcon />
-            </div>
-            <p>Arctic</p>
-          </div>
-        </Link>
-        <Link to={`/all?query=${"a"}`} className="link-style">
-          <div className="filter">
-            <div className="icon">
-              <SportsBasketballIcon />
-            </div>
-            <p>Play</p>
-          </div>
-        </Link>
+     <>
+  <div className="filters">
+    <Link to={`/all?query=${"a"}`} className="link-style">
+      <div className="filter">
+        <div className="icon">
+          <WhatshotIcon />
+        </div>
+        <p>Trending</p>
       </div>
-    </>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style">
+      <div className="filter">
+        <div className="icon">
+          <BedIcon />
+        </div>
+        <p>Rooms</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style">
+      <div className="filter">
+        <div className="icon">
+          <HouseboatIcon />
+        </div>
+        <p>Boathouse</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg">
+      <div className="filter">
+        <div className="icon">
+          <PoolIcon />
+        </div>
+        <p>Amazing pools</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg">
+      <div className="filter">
+        <div className="icon">
+          <AgricultureIcon />
+        </div>
+        <p>Farm</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg">
+      <div className="filter">
+        <div className="icon">
+          <BeachAccessIcon />
+        </div>
+        <p>Beach</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg">
+      <div className="filter">
+        <div className="icon">
+          <CastleIcon />
+        </div>
+        <p>Castles</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+      <div className="filter">
+        <div className="icon">
+          <ForestIcon />
+        </div>
+        <p>Tropical</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+      <div className="filter">
+        <div className="icon">
+          <DownhillSkiingIcon />
+        </div>
+        <p>Ski-in/out</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+      <div className="filter">
+        <div className="icon">
+          <ApartmentIcon />
+        </div>
+        <p>Iconic Cities</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+      <div className="filter">
+        <div className="icon">
+          <AcUnitIcon />
+        </div>
+        <p>Arctic</p>
+      </div>
+    </Link>
+    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+      <div className="filter">
+        <div className="icon">
+          <SportsBasketballIcon />
+        </div>
+        <p>Play</p>
+      </div>
+    </Link>
+  </div>
+</>
+
   );
 }
 

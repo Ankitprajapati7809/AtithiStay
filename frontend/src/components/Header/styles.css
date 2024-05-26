@@ -168,3 +168,35 @@ body {
 .btn-dark-xs-sm {
   display: none;
 }
+
+.search-wrapper {
+  position: relative;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #e9ecef;
+  /* border: 1px solid #ccc; */
+  border-top: none;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  /* border: none; */
+  border-radius: 10px;
+
+}
+
+.suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: white;
+}

@@ -16,6 +16,7 @@ function Listing() {
     price: "",
     description: "",
     location: "",
+    owner: [],
     country: "",
     reviews: [],
   });
@@ -131,7 +132,7 @@ function Listing() {
               image={listing.image.url}
               alt="green iguana"
             />
-            <p>{listing.owner}</p>
+            <p><i>Owned by - {listing.owner.username}</i></p>
             <p>{listing.description}</p>
             <p>&#8377;{listing.price}/night</p>
             <p>{listing.location}</p>
@@ -251,7 +252,7 @@ function Listing() {
                         {review.rating}
                       </p>
                     </h6>
-                    <p>{review.review}</p>
+                    <p>- {review.review}</p>
 
                     <button
                       onClick={() => deleteReview(review._id)}
@@ -267,6 +268,7 @@ function Listing() {
           </div>
         </div>
       </div>
+
     </>
   );
 }

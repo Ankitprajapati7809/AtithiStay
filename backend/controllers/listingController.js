@@ -45,7 +45,7 @@ module.exports.showListing = async (req, resp) => {
     const getListing = await Listing.findById(id).populate({
       path: "reviews",
       populate: { path: "reviewOwner" },
-    });
+    }).populate("owner");
     resp.send(getListing);
   } catch (error) {
     console.log(error);

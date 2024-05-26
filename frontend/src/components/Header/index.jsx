@@ -1,43 +1,30 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
+import PlaceIcon from '@mui/icons-material/Place';
 import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../../assets/logo/Atithistay-logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import { showSuccessMessage, showErrorMessage } from "../flashMessages";
+import { showSuccessMessage } from "../flashMessages";
 import Axios from "axios";
 
 function Header() {
   const [searchInput, setSearchInput] = useState("");
   const [data, setData] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  const handelSearchInput = async (e) => {
-    setSearchInput(e.target.value);
-  };
   Axios.defaults.withCredentials = true;
-
-  const getUser = async () => {
-    await Axios.get("http://localhost:5000/checkAuth")
-      .then((resp) => {
-        console.log("999999999999999999999999999999999999999999999999999");
-        // console.log(resp.data);
-        setUser(resp.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   useEffect(() => {
     getUser();
   }, []);
 
-  const getresult = async () => {
-    await Axios.get("http://localhost:5000/listing")
+  const getUser = async () => {
+    await Axios.get("http://localhost:5000/checkAuth")
       .then((resp) => {
-        // console.log(resp.data);
-        setData(resp.data);
+        setUser(resp.data);
       })
       .catch((err) => {
         console.log(err);
@@ -50,13 +37,39 @@ function Header() {
     }
   }, [searchInput]);
 
-  const filteredData = data.filter((item) => {
-    return item.title.toLowerCase().includes(searchInput.toLowerCase());
-  });
+  const getresult = async () => {
+    await Axios.get("http://localhost:5000/listing")
+      .then((resp) => {
+        console.log(resp.data)
+        setData(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handelSearchInput = (e) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    if (value) {
+      const filteredSuggestions = data.filter((item) =>
+        item.location.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchInput(suggestion.location);
+    setShowSuggestions(false);
+    navigate(`/listing?query=${suggestion.location}`);
+  };
 
   const handelSearchSubmit = (e) => {
     e.preventDefault();
-
     if (searchInput) {
       navigate(`/listing?query=${searchInput}`);
     }
@@ -69,9 +82,9 @@ function Header() {
   };
 
   const handelLogout = async () => {
-    // const response = await Axios.get("http://localhost:5000/logout");
-    // showSuccessMessage(response.data);
-    // navigate("/listing");
+    const response = await Axios.get("http://localhost:5000/logout");
+    showSuccessMessage(response.data);
+    navigate("/listing");
   };
 
   return (
@@ -108,17 +121,28 @@ function Header() {
                   onChange={handelSearchInput}
                   className="searchinput "
                   name="searchInput"
-                  data-bs-toggle="dropdown"
                   autoComplete="off"
                   onKeyDown={handelKeyDown}
                 />
-                {/* <SearchIcon/> */}
+                {showSuggestions && (
+                  <ul className="suggestions-list">
+                    {suggestions.map((suggestion, index) => (
+                      <li
+                        key={index}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                      >
+                       
+                       
+                        <PlaceIcon style={{ color: "gray" }} />{suggestion.location}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
               <button onClick={handelSearchSubmit} className="searchButton">
                 <SearchIcon />
               </button>
             </div>
-
             <div className="navbar-nav ms-auto">
               <Link className="nav-link" to="/addNew">
                 Atithistay your home
@@ -141,38 +165,6 @@ function Header() {
               )}
             </div>
           </div>
-          {/* <div className="search-bar ">
-          <div className="subSearchBar dropdown "> */}
-
-          {/* <ul className="dropdown-menu">
-              {filteredData.slice(0, 5).map((item, index) => (
-                <li key={index}>
-                  <Link
-                    to={`/listing?query=${item.location}`}
-                    className="dropdown-item"
-                  >
-                    {item.location}
-                  </Link>
-                </li>
-              ))}
-            </ul> */}
-          {/* </div>
-          </div> */}
-          {/* <div className="profile-container">
-            <Link to="/addNew">Airbnb your home</Link>
-            {user ? (
-              <>
-                <button onClick={handelLogout} className="btn btn-primary">
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/signUP">Sign up</Link>
-                <Link to="/logIn">Log in</Link>
-              </>
-            )}
-          </div> */}
         </div>
       </nav>
     </>

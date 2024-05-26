@@ -20,7 +20,7 @@ const listingSchema = new schema({
     filename: String,
   },
   owner: {
-    type: String,
+    type: schema.Types.ObjectId, ref:"User",
     required: true,
   },
   price: {
