@@ -14,10 +14,13 @@ import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
 import "./filtersIcon.css";
 import { Link } from "react-router-dom";
 function FiltersIcon() {
+  
   return (
      <>
-  <div className="filters">
-    <Link to={`/all?query=${"a"}`} className="link-style">
+
+    <div className="horizontal-line"></div>
+  <div className="filters mt-3">
+    <Link to={`/listing?query=${"Trending"}`} className="link-style" >
       <div className="filter">
         <div className="icon">
           <WhatshotIcon />
@@ -25,7 +28,7 @@ function FiltersIcon() {
         <p>Trending</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style">
+    <Link to={`/listing?query=${"Rooms"}`} className="link-style">
       <div className="filter">
         <div className="icon">
           <BedIcon />
@@ -33,7 +36,7 @@ function FiltersIcon() {
         <p>Rooms</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style">
+    <Link to={`/listing?query=${"Boathouse"}`} className="link-style">
       <div className="filter">
         <div className="icon">
           <HouseboatIcon />
@@ -41,7 +44,7 @@ function FiltersIcon() {
         <p>Boathouse</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg">
+    <Link to={`/listing?query=${"pools"}`} className="link-style olg">
       <div className="filter">
         <div className="icon">
           <PoolIcon />
@@ -49,7 +52,7 @@ function FiltersIcon() {
         <p>Amazing pools</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg">
+    <Link to={`/listing?query=${"farm"}`} className="link-style olg">
       <div className="filter">
         <div className="icon">
           <AgricultureIcon />
@@ -57,7 +60,7 @@ function FiltersIcon() {
         <p>Farm</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg">
+    <Link to={`/listing?query=${"Beach"}`} className="link-style olg">
       <div className="filter">
         <div className="icon">
           <BeachAccessIcon />
@@ -65,7 +68,7 @@ function FiltersIcon() {
         <p>Beach</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg">
+    <Link to={`/listing?query=${"Castles"}`} className="link-style olg">
       <div className="filter">
         <div className="icon">
           <CastleIcon />
@@ -73,7 +76,7 @@ function FiltersIcon() {
         <p>Castles</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+    <Link to={`/listing?query=${"Tropical"}`} className="link-style olg olgs">
       <div className="filter">
         <div className="icon">
           <ForestIcon />
@@ -81,7 +84,7 @@ function FiltersIcon() {
         <p>Tropical</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+    <Link to={`/listing?query=${"Ski-in/out"}`} className="link-style olg olgs">
       <div className="filter">
         <div className="icon">
           <DownhillSkiingIcon />
@@ -89,7 +92,7 @@ function FiltersIcon() {
         <p>Ski-in/out</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+    <Link to={`/listing?query=${"Iconic Cities"}`} className="link-style olg olgs">
       <div className="filter">
         <div className="icon">
           <ApartmentIcon />
@@ -97,7 +100,7 @@ function FiltersIcon() {
         <p>Iconic Cities</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+    <Link to={`/listing?query=${"Arctic"}`} className="link-style olg olgs">
       <div className="filter">
         <div className="icon">
           <AcUnitIcon />
@@ -105,7 +108,7 @@ function FiltersIcon() {
         <p>Arctic</p>
       </div>
     </Link>
-    <Link to={`/all?query=${"a"}`} className="link-style olg olgs">
+    <Link to={`/listing?query=${"Play"}`} className="link-style olg olgs">
       <div className="filter">
         <div className="icon">
           <SportsBasketballIcon />
@@ -114,6 +117,7 @@ function FiltersIcon() {
       </div>
     </Link>
   </div>
+  <div className="horizontal-line-with-shadow"></div>
 </>
 
   );
