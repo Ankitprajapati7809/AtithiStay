@@ -1,8 +1,10 @@
+require('dotenv').config();
+
 const User = require("../model/userSchema.js");
-const bcrypt = require("bcrypt"); // To hash passwords
+const bcrypt = require("bcrypt"); 
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = "sdfgh56774sdfg";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports.registerUser = async (req, res) => {
   try {
@@ -17,7 +19,7 @@ module.exports.registerUser = async (req, res) => {
     const newUser = new User({
       username: username,
       email: email,
-      password: hashedPassword, // Store hashed password
+      password: hashedPassword, 
     });
 
     const savedUser = await newUser.save();
@@ -32,7 +34,6 @@ module.exports.registerUser = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(402).json({ error: "Invalid email or password" });
     }
-      // Create a JWT token with the user's ID and a secret key
   const token = jwt.sign(
     {userId: user._id, username: user.username },
     JWT_SECRET,

@@ -25,7 +25,7 @@ function Header() {
   const getUser = async () => {
     try {
       const resp = await Axios.get("http://localhost:5000/checkAuth");
-      console.log(resp)
+      // console.log(resp);
       setUser(resp.data);
     } catch (err) {
       console.log(err);

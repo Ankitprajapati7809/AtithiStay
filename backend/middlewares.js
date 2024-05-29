@@ -1,10 +1,10 @@
+require('dotenv').config();
+
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = "sdfgh56774sdfg";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports.authenticateJWT = (req, res, next) => {
-  console.log("..............")
-  console.log (req.cookies.authToken);
-  console.log("------------------")
+  // console.log (req.cookies.authToken);
   const token = req.cookies.authToken; 
 
   if (!token) {
@@ -12,9 +12,8 @@ module.exports.authenticateJWT = (req, res, next) => {
   } 
 
   try {
-    // console.log("Aa gya bhi")
-    const decoded = jwt.verify(token, JWT_SECRET); // Verify the token with the secret key
-    req.user = decoded; // Set the user data on the request object
+    const decoded = jwt.verify(token, JWT_SECRET); 
+    req.user = decoded; 
     // console.log(req.user)
     // res.status(200).json(req.user);
     next();

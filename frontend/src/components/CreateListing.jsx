@@ -82,7 +82,7 @@ const CreateListing = () => {
   }, []);
 
   const handelChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setListingData({ ...listingData, [e.target.name]: e.target.value });
   };
 

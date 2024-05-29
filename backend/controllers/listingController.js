@@ -13,12 +13,11 @@ module.exports.renderAddNewForm = (req, resp) => {
 };
 
 module.exports.addedNewListing = async (req, resp) => {
-  console.log("mmmmmmmmmmmmmmmmmm");
-  console.log(req.user.userId);
+  // console.log(req.user.userId);
   try {
-    console.log("55555555555555555555");
-    console.log(req.user);
-    console.log("55555555555555555555");
+    // console.log("55555555555555555555");
+    // console.log(req.user);
+    // console.log("55555555555555555555");
     let url = req.file.path;
     const ListingData = req.body;
     const newListing = new Listing({
@@ -32,8 +31,7 @@ module.exports.addedNewListing = async (req, resp) => {
     });
     (newListing.owner = req.user.userId), (newListing.image = { url });
     const savingListing = await newListing.save();
-    console.log("7777777777777777777777777777")
-    console.log(savingListing);
+    // console.log(savingListing);
     resp.status(200).json(savingListing);
   } catch (error) {
     console.log(error);
@@ -44,7 +42,7 @@ module.exports.addedNewListing = async (req, resp) => {
 module.exports.showListing = async (req, resp) => {
   try {
     const { id } = req.params;
-    console.log(id);
+    // console.log(id);
     const getListing = await Listing.findById(id)
       .populate({
         path: "reviews",
@@ -60,9 +58,8 @@ module.exports.showListing = async (req, resp) => {
 module.exports.renderEditForm = async (req, resp) => {
   try {
     const { id } = req.params;
-    console.log("2222222222223333333333333");
-    console.log(id);
-    console.log(req.user);
+    // console.log(id);
+    // console.log(req.user);
     const getListing = await Listing.findById(id);
     if (req.user.userId !== getListing.owner.toString()) {
       return resp.status(402).json({
@@ -97,9 +94,8 @@ module.exports.updateListing = async (req, resp) => {
 module.exports.deleteListing = async (req, resp) => {
   try {
     const { id } = req.params;
-    console.log("///////////////////////////");
-    console.log(id);
-    console.log(req.user);
+    // console.log(id);
+    // console.log(req.user);
 
     const listing = await Listing.findById(id);
     // console.log(listing.owner);

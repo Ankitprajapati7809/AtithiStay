@@ -6,11 +6,7 @@ const upload = multer({ storage });
 const listingContainer = require("../controllers/listingController.js")
 const {authenticateJWT} = require("../middlewares.js")
 
-router.get("/", listingContainer.index);
-
-// router.get("/user", (req, resp)=>{
-
-// })  
+router.get("/", listingContainer.index); 
 
 router.get("/verify", authenticateJWT, listingContainer.renderAddNewForm)
 

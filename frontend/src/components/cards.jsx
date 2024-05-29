@@ -3,7 +3,7 @@ import { Card, CardMedia, Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FiltersIcon from "./filtersIcon";
 import { Link, useLocation } from "react-router-dom";
-import "./cards.css"
+import "./cards.css";
 
 function Cards() {
   const [searchResult, setSearchResult] = useState([]);
@@ -49,10 +49,6 @@ function Cards() {
     getData();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(searchInput);
-  // }, [searchInput]);
-
   return (
     <Container sx={{ marginTop: 3, padding: 0 }}>
       <FiltersIcon />
@@ -60,7 +56,10 @@ function Cards() {
         {(searchResult.length > 0 ? searchResult : allListing).map(
           (listing) => (
             <Grid item key={listing._id} xs={12} sm={6} md={4} lg={3}>
-              <Link to={`/listing/${listing._id}`} style={{textDecoration: "none"}}>
+              <Link
+                to={`/listing/${listing._id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Card sx={{ px: 1.5, boxShadow: "none" }} className="cardstyle">
                   <CardMedia
                     sx={{ borderRadius: "1.5rem" }}
@@ -69,8 +68,14 @@ function Cards() {
                     image={listing.image.url}
                     alt="green iguana"
                   />
-                  <b >{listing.location}</b>
-                  <p className="style"><span style={{ color: 'black', fontWeight: 'bold' }}>&#8377; {listing.price}</span> night</p>                </Card>
+                  <b>{listing.location}</b>
+                  <p className="style">
+                    <span style={{ color: "black", fontWeight: "bold" }}>
+                      &#8377; {listing.price}
+                    </span>{" "}
+                    night
+                  </p>{" "}
+                </Card>
               </Link>
             </Grid>
           )

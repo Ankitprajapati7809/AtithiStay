@@ -48,7 +48,6 @@ body {
   border: none;
   border-left: 1px solid rgb(215, 213, 213);
   padding: 9px 12px;
-  /* color: #da7e87; */
   outline: none;
   font-size: 0.9rem;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1), 2px 2px 3px rgba(0, 0, 0, 0.08);
@@ -77,11 +76,11 @@ body {
   .searchinput {
     width: 15rem;
   }
-  .searchButton{
+  .searchButton {
     padding: 9px 12px;
-    width:3rem;
+    width: 3rem;
   }
-  .search-container{
+  .search-container {
     flex-direction: row;
   }
   .navbar-collapse {
@@ -93,11 +92,11 @@ body {
   .searchinput {
     width: 18rem;
   }
-  .searchButton{
+  .searchButton {
     padding: 9px 12px;
-    width:3rem;
+    width: 3rem;
   }
-  .search-container{
+  .search-container {
     flex-direction: row;
   }
 }
@@ -105,11 +104,11 @@ body {
   .searchinput {
     width: 18rem;
   }
-  .searchButton{
+  .searchButton {
     padding: 9px 12px;
-    width:3rem;
+    width: 3rem;
   }
-  .search-container{
+  .search-container {
     flex-direction: row;
   }
 }
@@ -130,25 +129,6 @@ body {
     border: 1px solid var(--gray);
     box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
   }
-
-  /* .profile-container {
-    display: none;
-  } */
-  /* .navbar-logo {
-    display: none;
-  } */
-
-  /* .searchButton {
-    display: flex;
-    align-items: center;
-    border-radius: 25px;
-    background-color: #fe424d;
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    margin-left: 0.5rem;
-    font-size: 0.9rem;
-  } */
 }
 
 .dropdown-menu {
@@ -164,7 +144,6 @@ body {
   border-radius: 2px;
 }
 
-/* Hide the element on larger screens */
 .btn-dark-xs-sm {
   display: none;
 }
@@ -190,8 +169,6 @@ body {
   /* border: none; */
   border-radius: 10px;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1), 2px 2px 3px rgba(0, 0, 0, 0.08);
-
-
 }
 
 .suggestions-list li {

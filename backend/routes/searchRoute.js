@@ -12,7 +12,6 @@ router.post("/", async (req, resp) => {
               { place: { $regex: searchInput, $options: "i" } }
           ]
       });
-    //   console.log("111111111111111111111")
     //   console.log(result)
       resp.send(result);
   } catch (err) {
