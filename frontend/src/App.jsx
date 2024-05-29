@@ -11,12 +11,15 @@ import SearchComponent from "./components/Header/SearchComponent";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Footer } from "./components/Footer/footer";
+// import { AuthProvider } from './components/AuthContext';
+
 
 import "./App.css";
 
 function App() {
   return (
     <>
+    {/* <AuthProvider> */}
       <div className="page-container">
         <Header />
         <div className="content-wrap">
@@ -34,6 +37,7 @@ function App() {
       </div>
       {/* <BottomNavigation /> */}
       <ToastContainer />
+      {/* </AuthProvider> */}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import PlaceIcon from '@mui/icons-material/Place';
+import PlaceIcon from "@mui/icons-material/Place";
 import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../../assets/logo/Atithistay-logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,51 +19,47 @@ function Header() {
 
   useEffect(() => {
     getUser();
+    getresult();
   }, []);
 
   const getUser = async () => {
-    await Axios.get("http://localhost:5000/checkAuth")
-      .then((resp) => {
-        setUser(resp.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      const resp = await Axios.get("http://localhost:5000/checkAuth");
+      console.log(resp)
+      setUser(resp.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getresult = async () => {
+    try {
+      const resp = await Axios.get("http://localhost:5000/listing");
+      setData(resp.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     if (searchInput !== "") {
-      getresult();
-    }
-  }, [searchInput]);
-
-  const getresult = async () => {
-    await Axios.get("http://localhost:5000/listing")
-      .then((resp) => {
-        console.log(resp.data)
-        setData(resp.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const handelSearchInput = (e) => {
-    const value = e.target.value;
-    setSearchInput(value);
-    if (value) {
       const filteredSuggestions = data.filter((item) =>
-        item.location.toLowerCase().includes(value.toLowerCase())
+        item.location.toLowerCase().includes(searchInput.toLowerCase())
       );
       setSuggestions(filteredSuggestions);
       setShowSuggestions(true);
     } else {
       setShowSuggestions(false);
     }
+  }, [searchInput, data]);
+
+  const handelSearchInput = (e) => {
+    const value = e.target.value;
+    setSearchInput(value);
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setSearchInput(suggestion.location);
+    // setSearchInput(suggestion.location);
     setShowSuggestions(false);
     navigate(`/listing?query=${suggestion.location}`);
   };
@@ -71,12 +67,14 @@ function Header() {
   const handelSearchSubmit = (e) => {
     e.preventDefault();
     if (searchInput) {
+      setShowSuggestions(false);
       navigate(`/listing?query=${searchInput}`);
     }
   };
 
   const handelKeyDown = (event) => {
     if (event.key === "Enter") {
+      setShowSuggestions(false);
       navigate(`/listing?query=${searchInput}`);
     }
   };
@@ -109,7 +107,12 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ">
               <Link className="nav-link" to="/listing">
-                Explore
+                <span
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavAltMarkup"
+                >
+                  Explore
+                </span>
               </Link>
             </div>
             <div className="navbar-nav ms-auto search-container">
@@ -131,9 +134,8 @@ function Header() {
                         key={index}
                         onClick={() => handleSuggestionClick(suggestion)}
                       >
-                       
-                       
-                        <PlaceIcon style={{ color: "gray" }} />{suggestion.location}
+                        <PlaceIcon style={{ color: "gray" }} />
+                        {suggestion.location}
                       </li>
                     ))}
                   </ul>
@@ -145,21 +147,41 @@ function Header() {
             </div>
             <div className="navbar-nav ms-auto">
               <Link className="nav-link" to="/addNew">
-                Atithistay your home
+                <span
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavAltMarkup"
+                >
+                  Atithistay your home
+                </span>
               </Link>
               {user ? (
                 <>
                   <button onClick={handelLogout} className="btn ">
-                    <b>Logout</b>
+                    <b
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarNavAltMarkup"
+                    >
+                      Logout
+                    </b>
                   </button>
                 </>
               ) : (
                 <>
                   <Link className="nav-link" to="/logIn">
-                    <b>Log in</b>
+                    <b
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarNavAltMarkup"
+                    >
+                      Log in
+                    </b>
                   </Link>
                   <Link className="nav-link" to="/signUP">
-                    <b>Sign up</b>
+                    <b
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarNavAltMarkup"
+                    >
+                      Sign up
+                    </b>
                   </Link>
                 </>
               )}

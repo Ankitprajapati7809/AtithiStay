@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/airbnbWithReact")
+  .connect(process.env.ATLAS_URL)
   .then(() => console.log("Connected Successfully"))
   .catch((err) => console.log(err));
 
@@ -35,6 +35,10 @@ const listingSchema = new schema({
     type: String,
     required: true,
   },
+  place: {
+    type: String,
+    required: true,
+  },
   reviews: [
     {
     type: schema.Types.ObjectId, ref: "review",
@@ -45,3 +49,4 @@ const listingSchema = new schema({
 const Listing = mongoose.model("Listing", listingSchema);
 
 module.exports = Listing;
+  

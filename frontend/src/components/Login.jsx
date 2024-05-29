@@ -30,7 +30,11 @@ const Login = () => {
       showSuccessMessage(res.data)
       })
       .catch((err)=>{
-        console.log(err)
+        showErrorMessage(err.response.data.error);
+        setData({
+          username: "",
+          password: "",
+        })
       })
 
     } catch (error) {

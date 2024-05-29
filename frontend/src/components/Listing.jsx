@@ -121,10 +121,10 @@ function Listing() {
 
   return (
     <>
-      <div className="container  ">
+      <div className="container mt-3 ">
         <div className="offset-xs-1 col-xs-6 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 ">
           <Card sx={{ px: 1.5, boxShadow: "none" }}>
-            <h2>{listing.title}</h2>
+            <h4>{listing.title}</h4>
             <CardMedia
               sx={{ borderRadius: "1.5rem" }}
               component="img"
@@ -134,8 +134,8 @@ function Listing() {
             />
             <p><i>Owned by - {listing.owner.username}</i></p>
             <p>{listing.description}</p>
-            <p>&#8377;{listing.price}/night</p>
-            <p>{listing.location}</p>
+            <b>&#8377;{listing.price}/night</b>
+            <p className="mt-3">{listing.location}</p>
             <p>{listing.country}</p>
             <br />
             <button

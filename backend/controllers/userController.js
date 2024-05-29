@@ -8,12 +8,10 @@ module.exports.registerUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Validate input
     if (!username || !email || !password) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // Hash password before saving
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const newUser = new User({
@@ -39,11 +37,11 @@ module.exports.registerUser = async (req, res) => {
     {userId: user._id, username: user.username },
     JWT_SECRET,
     {
-      expiresIn: "30m",
+      expiresIn: "20d",
     }
   );
   res.cookie("authToken", token, {
-    maxAge: 1800000,
+    maxAge: 20 * 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: true,
     // sameSite: "strict",
@@ -73,7 +71,7 @@ module.exports.loginUser = async (req, res) => {
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
-    return res.status(402).json({ error: "password" });
+    return res.status(402).json({ error: "Invalid password." });
   }
 
   // Create a JWT token with the user's ID and a secret key
@@ -81,11 +79,11 @@ module.exports.loginUser = async (req, res) => {
     { userId: user._id, username: user.username },
     JWT_SECRET,
     {
-      expiresIn: "30m",
+      expiresIn: "20d",
     }
   );
   res.cookie("authToken", token, {
-    maxAge: 1800000,
+    maxAge: 20 * 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: true,
     // sameSite: "strict",

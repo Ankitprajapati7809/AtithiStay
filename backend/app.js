@@ -23,7 +23,7 @@ app.use("/", userRoutes);
 app.use("/", reviewRoutes);
 
 app.get("/checkauth", (req, res)=>{
-  // console.log("..........................")
+  console.log(".............56............")
   const token = req.cookies.authToken;
   console.log(token)
   res.send(token);

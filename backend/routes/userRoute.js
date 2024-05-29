@@ -4,9 +4,7 @@ const userController = require("../controllers/userController");
 
 router.post("/signup", userController.registerUser);
 
-router.post(
-  "/login", userController.loginUser
-);
+router.post("/login", userController.loginUser);
 
 router.get("/logout", (req, resp) => {
     resp.clearCookie("authToken")

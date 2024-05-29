@@ -22,10 +22,10 @@ function Cards() {
   }, [location.search]);
 
   const getSearchData = async (query) => {
-    console.log(query);
+    // console.log(query);
     await Axios.post("http://localhost:5000/search", { query })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setSearchResult(res.data);
       })
       .catch((err) => {
@@ -56,11 +56,11 @@ function Cards() {
   return (
     <Container sx={{ marginTop: 3, padding: 0 }}>
       <FiltersIcon />
-      <Grid container>
+      <Grid container sx={{ marginTop: 3 }}>
         {(searchResult.length > 0 ? searchResult : allListing).map(
           (listing) => (
             <Grid item key={listing._id} xs={12} sm={6} md={4} lg={3}>
-              <Link to={`/listing/${listing._id}`}>
+              <Link to={`/listing/${listing._id}`} style={{textDecoration: "none"}}>
                 <Card sx={{ px: 1.5, boxShadow: "none" }} className="cardstyle">
                   <CardMedia
                     sx={{ borderRadius: "1.5rem" }}
@@ -69,9 +69,8 @@ function Cards() {
                     image={listing.image.url}
                     alt="green iguana"
                   />
-                  <b>{listing.title}</b>
-                  <p>&#8377;{listing.price}/night</p>
-                </Card>
+                  <b >{listing.location}</b>
+                  <p className="style"><span style={{ color: 'black', fontWeight: 'bold' }}>&#8377; {listing.price}</span> night</p>                </Card>
               </Link>
             </Grid>
           )

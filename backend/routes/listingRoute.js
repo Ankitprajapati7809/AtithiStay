@@ -20,7 +20,7 @@ router.get("/:id", listingContainer.showListing);
 
 router.get("/:id/edit", authenticateJWT, listingContainer.renderEditForm);
 
-router.patch("/:id/edit", upload.single("image"), listingContainer.updateListing);
+router.put("/:id/edit", upload.single("image"), listingContainer.updateListing);
 
 router.delete("/:id", authenticateJWT, listingContainer.deleteListing);
 
