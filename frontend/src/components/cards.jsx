@@ -8,8 +8,18 @@ import "./cards.css";
 function Cards() {
   const [searchResult, setSearchResult] = useState([]);
   const [allListing, setListing] = useState([]);
+  const[filterResult, setfilterResult] = useState([]);
   const location = useLocation();
 
+  function setPlace(data){
+  console.log(data);
+   const result = allListing.filter((listing)=>{
+     return listing.place === data;
+   })
+   setfilterResult(result);
+//  console.log(filterResult);
+  }
+  
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const query = searchParams.get("query");
@@ -34,7 +44,7 @@ function Cards() {
   };
 
   const getData = async () => {
-    await Axios.get("http://localhost:5000/listing")
+    await Axios.get("http://localhost:5000/")
 
       .then((response) => {
         setListing(response.data);
@@ -51,20 +61,22 @@ function Cards() {
 
   return (
     <Container sx={{ marginTop: 3, padding: 0 }}>
-      <FiltersIcon />
+
+      <FiltersIcon setPlace={setPlace} />
+
       <Grid container sx={{ marginTop: 3 }}>
-        {(searchResult.length > 0 ? searchResult : allListing).map(
+        {(filterResult.length > 0 ? filterResult : (searchResult.length > 0 ? searchResult : allListing)).map(
           (listing) => (
             <Grid item key={listing._id} xs={12} sm={6} md={4} lg={3}>
               <Link
-                to={`/listing/${listing._id}`}
+                to={`/${listing._id}`}
                 style={{ textDecoration: "none" }}
               >
                 <Card sx={{ px: 1.5, boxShadow: "none" }} className="cardstyle">
                   <CardMedia
                     sx={{ borderRadius: "1.5rem" }}
                     component="img"
-                    height="240px"
+                    height= "210px"
                     image={listing.image.url}
                     alt="green iguana"
                   />
@@ -72,9 +84,8 @@ function Cards() {
                   <p className="style">
                     <span style={{ color: "black", fontWeight: "bold" }}>
                       &#8377; {listing.price}
-                    </span>{" "}
-                    night
-                  </p>{" "}
+                    </span> night
+                  </p>
                 </Card>
               </Link>
             </Grid>

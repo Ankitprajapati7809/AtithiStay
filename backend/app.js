@@ -17,17 +17,17 @@ app.use(
   })
 );    
 
-app.use("/listing", listingRoutes);
+app.use("/", listingRoutes); 
 app.use("/search", searchRoutes);
 app.use("/", userRoutes);
 app.use("/", reviewRoutes);
 
-app.get("/checkauth", (req, res)=>{
+app.get("/verify/checkauth", (req, res)=>{
   const token = req.cookies.authToken;
   // console.log(token)
   res.send(token);
 })   
-
+ 
 app.all("*", (req, resp)=>{
   resp.send("page not found")
 })

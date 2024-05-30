@@ -25,9 +25,9 @@ const Login = () => {
       } 
     )  
       .then((res)=>{
-        navigate("/listing")
+        navigate("/")
       console.log(res.data);
-      showSuccessMessage(res.data)
+      // showSuccessMessage(res.data)
       })
       .catch((err)=>{
         showErrorMessage(err.response.data.error);

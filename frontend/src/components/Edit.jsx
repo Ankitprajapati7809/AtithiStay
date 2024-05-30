@@ -34,7 +34,7 @@ function Edit() {
   const getData = async () => {
     try {
       const response = await Axios.get(
-        `http://localhost:5000/listing/${id}/edit`,
+        `http://localhost:5000/${id}/edit`,
         {
           withCredentials: true,
         }
@@ -59,7 +59,7 @@ function Edit() {
         if (error.request.status === 402) {
           showInfoMessage(error.response.data.error);
         }
-        navigate(`/listing/${id}`);
+        navigate(`/${id}`);
       }
     }
   };
@@ -96,7 +96,7 @@ function Edit() {
       }
       setLoading(true);
 
-      await Axios.put(`http://localhost:5000/listing/${id}/edit`, formData, {
+      await Axios.put(`http://localhost:5000/${id}/edit`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -105,7 +105,7 @@ function Edit() {
       // console.log(response.data);
       showSuccessMessage("You have successfully Edited.");
       setLoading(false);
-      navigate("/listing");
+      navigate("/");
     } catch (error) {
       console.log(error);
       setLoading(false);

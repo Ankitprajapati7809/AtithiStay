@@ -6,7 +6,7 @@ router.post("/signup", userController.registerUser);
 
 router.post("/login", userController.loginUser);
 
-router.get("/logout", (req, resp) => {
+router.get("/api/logout", (req, resp) => { 
     resp.clearCookie("authToken")
  return resp.send("Logout succesfully! ")
 

@@ -48,7 +48,7 @@ const CreateListing = () => {
       console.log(listingData)
       setLoading(true);
       const response = await Axios.post(
-        "http://localhost:5000/listing",
+        "http://localhost:5000/",
         listingData,
         {
           headers: {
@@ -57,8 +57,8 @@ const CreateListing = () => {
           withCredentials: true
         }
       );
-      navigate("/listing");
-      console.log("111111111111111")
+      navigate("/");
+      // console.log("111111111111111")
       console.log(response.data);
       setLoading(false);
     } catch (error) {
@@ -68,7 +68,7 @@ const CreateListing = () => {
   };
 
   const getForm = async () => {
-    await Axios.get("http://localhost:5000/listing/verify",{withCredentials: true})
+    await Axios.get("http://localhost:5000/verify",{withCredentials: true})
     .then(()=>{})
      .catch(()=>{
       // console.log(err)

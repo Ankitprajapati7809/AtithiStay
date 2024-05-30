@@ -4,7 +4,7 @@ const Review = require("../model/reviewSchema");
 const Listing = require("../model/listingSchema");
 const { authenticateJWT } = require("../middlewares.js");
 
-router.post("/listing/:id/review", authenticateJWT, async (req, resp) => {
+router.post("/:id/review", authenticateJWT, async (req, resp) => {
   // console.log("id : ", req.params.id);
   const listing = await Listing.findById(req.params.id);
   const { rating, review } = req.body;
@@ -24,7 +24,7 @@ router.post("/listing/:id/review", authenticateJWT, async (req, resp) => {
   resp.status(200).send(savedReview);
 });
 router.delete(
-  "/listing/:listingId/review/:reviewId",
+  "/:listingId/review/:reviewId",
   authenticateJWT,
   async (req, resp) => {
     // console.log(req.user);
@@ -46,7 +46,7 @@ router.delete(
   }
 );
 
-router.get("/listing/:id/review", async (req, resp) => {
+router.get("/:id/review", async (req, resp) => {
   const reviewsData = await Listing.findById(req.params.id);
   resp.status(200).send(reviewsData.reviews);
 });

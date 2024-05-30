@@ -24,9 +24,9 @@ function App() {
         <Header />
         <div className="content-wrap">
           <Routes>
-            <Route exact path="/listing" element={<Cards />} />
-            <Route exact path="/listing/:id" element={<Listings />} />
-            <Route exact path="/listing/:id/edit" element={<Edit />} />
+            <Route exact path="/" element={<Cards />} />
+            <Route exact path="/:id" element={<Listings />} />
+            <Route exact path="/:id/edit" element={<Edit />} />
             <Route path="/addNew" element={<CreateListing />} />
             <Route exact path="/signUp" element={<SignUp />} />
             <Route exact path="/login" element={<Login />} />

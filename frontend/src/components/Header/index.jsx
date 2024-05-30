@@ -23,9 +23,9 @@ function Header() {
   }, []);
 
   const getUser = async () => {
-    try {
-      const resp = await Axios.get("http://localhost:5000/checkAuth");
-      // console.log(resp);
+    try {         
+       const resp = await Axios.get("http://localhost:5000/verify/checkAuth");
+      //  console.log(resp);
       setUser(resp.data);
     } catch (err) {
       console.log(err);
@@ -34,7 +34,7 @@ function Header() {
 
   const getresult = async () => {
     try {
-      const resp = await Axios.get("http://localhost:5000/listing");
+      const resp = await Axios.get("http://localhost:5000/");
       setData(resp.data);
     } catch (err) {
       console.log(err);
@@ -61,35 +61,35 @@ function Header() {
   const handleSuggestionClick = (suggestion) => {
     // setSearchInput(suggestion.location);
     setShowSuggestions(false);
-    navigate(`/listing?query=${suggestion.location}`);
+    navigate(`?query=${suggestion.location}`);
   };
 
   const handelSearchSubmit = (e) => {
     e.preventDefault();
     if (searchInput) {
       setShowSuggestions(false);
-      navigate(`/listing?query=${searchInput}`);
+      navigate(`?query=${searchInput}`);
     }
   };
 
   const handelKeyDown = (event) => {
     if (event.key === "Enter") {
       setShowSuggestions(false);
-      navigate(`/listing?query=${searchInput}`);
+      navigate(`?query=${searchInput}`);
     }
   };
 
   const handelLogout = async () => {
-    const response = await Axios.get("http://localhost:5000/logout");
+    const response = await Axios.get("http://localhost:5000/api/logout");
     showSuccessMessage(response.data);
-    navigate("/listing");
+    navigate("/"); 
   };
 
   return (
     <>
       <nav className="navbar navbar-expand-lg sticky-top">
         <div className="container-fluid">
-          <Link to="/listing" className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             <img
               src={Logo}
               alt="AirbnbLogo"
@@ -106,13 +106,8 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ">
-              <Link className="nav-link" to="/listing">
-                <span
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarNavAltMarkup"
-                >
+              <Link className="nav-link" to="/">
                   Explore
-                </span>
               </Link>
             </div>
             <div className="navbar-nav ms-auto search-container">
@@ -147,20 +142,12 @@ function Header() {
             </div>
             <div className="navbar-nav ms-auto">
               <Link className="nav-link" to="/addNew">
-                <span
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarNavAltMarkup"
-                >
                   Atithistay your home
-                </span>
               </Link>
               {user ? (
                 <>
                   <button onClick={handelLogout} className="btn ">
-                    <b
-                      data-bs-toggle="collapse"
-                      data-bs-target="#navbarNavAltMarkup"
-                    >
+                    <b>
                       Logout
                     </b>
                   </button>
@@ -168,18 +155,12 @@ function Header() {
               ) : (
                 <>
                   <Link className="nav-link" to="/logIn">
-                    <b
-                      data-bs-toggle="collapse"
-                      data-bs-target="#navbarNavAltMarkup"
-                    >
+                    <b>
                       Log in
                     </b>
                   </Link>
                   <Link className="nav-link" to="/signUP">
-                    <b
-                      data-bs-toggle="collapse"
-                      data-bs-target="#navbarNavAltMarkup"
-                    >
+                    <b>
                       Sign up
                     </b>
                   </Link>

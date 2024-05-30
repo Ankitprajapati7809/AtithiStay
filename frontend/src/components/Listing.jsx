@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import PlaceIcon from "@mui/icons-material/Place";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Card, CardMedia, Paper } from "@mui/material";
 import {
@@ -29,7 +30,7 @@ function Listing() {
   const { id } = useParams();
   const getListing = async () => {
     try {
-      await Axios.get(`http://localhost:5000/listing/${id}`).then(
+      await Axios.get(`http://localhost:5000/${id}`).then(
         (response) => {
           // console.log(response.data);
           setListing(response.data);
@@ -46,10 +47,10 @@ function Listing() {
   const navigate = useNavigate();
   const handelDelete = async (id) => {
     try {
-      await Axios.delete(`http://localhost:5000/listing/${id}`, {
+      await Axios.delete(`http://localhost:5000/${id}`, {
         withCredentials: true,
       }).then((response) => {
-        navigate("/listing");
+        navigate("/");
         showSuccessMessage("Listing deleted successfully!");
         console.log(response.data);
       });
@@ -65,7 +66,7 @@ function Listing() {
   };
 
   const handelSubmit = async () => {
-    await Axios.post(`http://localhost:5000/listing/${id}/review`, userReview, {
+    await Axios.post(`http://localhost:5000/${id}/review`, userReview, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -84,7 +85,7 @@ function Listing() {
     // console.log("id : ",reviewId)
     try {
       await Axios.delete(
-        `http://localhost:5000/listing/${id}/review/${reviewId}`,
+        `http://localhost:5000/${id}/review/${reviewId}`,
         {
           withCredentials: true,
         }
@@ -135,8 +136,8 @@ function Listing() {
             <p><i>Owned by - {listing.owner.username}</i></p>
             <p>{listing.description}</p>
             <b>&#8377;{listing.price}/night</b>
-            <p className="mt-3">{listing.location}</p>
-            <p>{listing.country}</p>
+            <p className="mt-3"><PlaceIcon style={{ color: "gray" , fontSize: "20"}} /> {listing.location}</p>
+            <p> {listing.country}</p>
             <br />
             <button
               onClick={() => {
@@ -147,7 +148,7 @@ function Listing() {
             >
               Delete
             </button>
-            <Link to={`/listing/${id}/edit`}>
+            <Link to={`/${id}/edit`}>
               <button
                 type="button"
                 className="btn btn-dark col-6 rounded-start-0 "
