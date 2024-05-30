@@ -90,16 +90,6 @@ module.exports.loginUser = async (req, res) => {
     // sameSite: "strict",
   });
 
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET); 
-    req.user = decoded; 
-    // console.log("uuuuuuuuuuuuuuuuuuu")
-    // console.log(req.user)
-    res.status(200).json(req.user);
-    // next();
-     
-  } catch (error) {
-    return res.status(401).json({ error: "Unauthorized. Invalid token." });
-  }
-  // res.json("Login successfull");
+  res.json("Login successfull");
 };
+ 

@@ -26,7 +26,7 @@ const SignUp = () => {
           "Content-Type": "application/json",
         },
       });
-      navigate("/listing");
+      navigate("/");
       showSuccessMessage("You are successfully registed!");
       
     } catch (error) {
@@ -38,7 +38,7 @@ const SignUp = () => {
     <>
       <div className="container col-xs-5 offset-sm-2 col-sm-6 offset-md-3 col-md-6 offset-lg-3 col-lg-4">
         <form onSubmit={handelSubmit} className="signup mt-5 col-xs-6 "
-        style={{backgroundColor: "#e9ecef", padding: 40, borderRadius: 10, border: "black"}}>
+        style={{backgroundColor: "#e9ecef", padding: 40, borderRadius: 10, border: "black",  boxShadow: "4px 4px 6px rgba(0, 0, 0, 0.1), 2px 2px 3px rgba(0, 0, 0, 0.08)"}}>
           <h2>Sign up</h2>
           <div className="mb-3 mt-3">
             <input
