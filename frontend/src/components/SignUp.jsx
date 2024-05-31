@@ -2,6 +2,7 @@ import  Axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { showSuccessMessage, showErrorMessage } from "./flashMessages";
+import {backendUrl} from "../../url";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -9,8 +10,6 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-
-  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   Axios.defaults.withCredentials = true;
  const navigate = useNavigate();

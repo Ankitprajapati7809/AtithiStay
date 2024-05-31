@@ -13,6 +13,7 @@ import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./CreateListing.css"
+import {backendUrl} from "../../url";
 
 const CreateListing = () => {
   const [validated, setValidated] = useState(false);
@@ -26,7 +27,6 @@ const CreateListing = () => {
     location: "",
     place: "",
   });
-  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   const handelInput = (e) => {
     setListingData({ ...listingData, [e.target.name]: e.target.value });

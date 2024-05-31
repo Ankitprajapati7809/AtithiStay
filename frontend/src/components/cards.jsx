@@ -4,13 +4,13 @@ import React, { useEffect, useState } from "react";
 import FiltersIcon from "./filtersIcon";
 import { Link, useLocation } from "react-router-dom";
 import "./cards.css";
+import {backendUrl} from "../../url";
 
 function Cards() {
   const [searchResult, setSearchResult] = useState([]);
   const [allListing, setListing] = useState([]);
   const[filterResult, setfilterResult] = useState([]);
   const location = useLocation();
-  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   function setPlace(data){
   console.log(data);

@@ -8,7 +8,7 @@ import {
   showErrorMessage,
   showInfoMessage,
 } from "./flashMessages";
-
+import {backendUrl} from "../../url";
 import "./Listing.css";
 
 function Listing() {
@@ -27,8 +27,6 @@ function Listing() {
     review: "",
     rating: "3",
   });
-
-  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   const { id } = useParams();
   const getListing = async () => {

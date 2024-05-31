@@ -17,6 +17,8 @@ import {
   showErrorMessage,
   showInfoMessage,
 } from "./flashMessages";
+import {backendUrl} from "../../url";
+
 
 function Edit() {
   const [edit, setEdit] = useState({
@@ -29,7 +31,6 @@ function Edit() {
     location: "",
   });
   const [loading, setLoading] = useState(false);
-  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   const { id } = useParams();
   const getData = async () => {

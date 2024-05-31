@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../../assets/logo/Atithistay-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { showSuccessMessage } from "../flashMessages";
+import {backendUrl} from "../../../url";
 import Axios from "axios";
 
 function Header() {
@@ -16,7 +17,6 @@ function Header() {
   const [user, setUser] = useState(null);
 
   Axios.defaults.withCredentials = true;
-  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   useEffect(() => {
     getUser();

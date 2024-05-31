@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 // import Header from "./Header";
 import { showSuccessMessage, showErrorMessage } from "./flashMessages";
+import {backendUrl} from "../../url";
 
 const Login = () => {
 
@@ -10,7 +11,6 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
