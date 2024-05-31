@@ -10,6 +10,7 @@ import {
 } from "./flashMessages";
 
 import "./Listing.css";
+
 function Listing() {
   const [listing, setListing] = useState({
     image: { url: "" },

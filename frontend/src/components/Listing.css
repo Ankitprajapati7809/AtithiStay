@@ -109,7 +109,7 @@
 .starability-slot > label {
   position: relative;
   display: inline-block;
-  float: left;
+  /* float: left; */
   width: 30px;
   height: 30px;
   font-size: 0.1em;
@@ -189,9 +189,9 @@
   }
 }
 
-.starability-slot > input:checked ~ label,
+/* .starability-slot > input:checked ~ label,
 .starability-slot > input:hover ~ label,
 .starability-slot > input:focus ~ label {
   -webkit-transition: background-position .7s;
   transition: background-position .7s;
-}
+} */
