@@ -26,6 +26,7 @@ const CreateListing = () => {
     location: "",
     place: "",
   });
+  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   const handelInput = (e) => {
     setListingData({ ...listingData, [e.target.name]: e.target.value });
@@ -48,7 +49,7 @@ const CreateListing = () => {
       console.log(listingData)
       setLoading(true);
       const response = await Axios.post(
-        "http://localhost:5000/",
+        `${backendUrl}/`,
         listingData,
         {
           headers: {
@@ -68,7 +69,7 @@ const CreateListing = () => {
   };
 
   const getForm = async () => {
-    await Axios.get("http://localhost:5000/verify",{withCredentials: true})
+    await Axios.get(`${backendUrl}/verify`,{withCredentials: true})
     .then(()=>{})
      .catch(()=>{
       // console.log(err)

@@ -10,7 +10,7 @@ export const Footer = () => {
             <i className="fa-brands fa-square-x-twitter"></i>
             <i className="fa-brands fa-square-instagram"></i>
           </div>
-          <div className="f-info-brand mt-2">&copy; AtithiStay pvt ltd</div>
+          <div className="f-info-brand mt-2">&copy; 2024 AtithiStay </div>
           <div className="f-info-links mt-2 ">
             <a href="#">Privacy</a>
             <a href="#">Term</a>

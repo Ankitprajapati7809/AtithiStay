@@ -10,6 +10,8 @@ const SignUp = () => {
     password: "",
   });
 
+  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
+
   Axios.defaults.withCredentials = true;
  const navigate = useNavigate();
   const handelChange = (e) => {
@@ -21,7 +23,7 @@ const SignUp = () => {
     // console.log(data);
 
     try {
-      const response = await Axios.post("http://localhost:5000/signup", data, {
+      const response = await Axios.post(`${backendUrl}/signup`, data, {
         headers: {
           "Content-Type": "application/json",
         },

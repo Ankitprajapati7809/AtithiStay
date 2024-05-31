@@ -29,12 +29,13 @@ function Edit() {
     location: "",
   });
   const [loading, setLoading] = useState(false);
+  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   const { id } = useParams();
   const getData = async () => {
     try {
       const response = await Axios.get(
-        `http://localhost:5000/${id}/edit`,
+        `${backendUrl}/${id}/edit`,
         {
           withCredentials: true,
         }
@@ -96,7 +97,7 @@ function Edit() {
       }
       setLoading(true);
 
-      await Axios.put(`http://localhost:5000/${id}/edit`, formData, {
+      await Axios.put(`${backendUrl}/${id}/edit`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

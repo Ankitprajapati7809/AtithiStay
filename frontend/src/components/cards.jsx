@@ -10,6 +10,7 @@ function Cards() {
   const [allListing, setListing] = useState([]);
   const[filterResult, setfilterResult] = useState([]);
   const location = useLocation();
+  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   function setPlace(data){
   console.log(data);
@@ -33,7 +34,7 @@ function Cards() {
 
   const getSearchData = async (query) => {
     // console.log(query);
-    await Axios.post("http://localhost:5000/search", { query })
+    await Axios.post(`${backendUrl}/search`, { query })
       .then((res) => {
         // console.log(res);
         setSearchResult(res.data);
@@ -44,7 +45,7 @@ function Cards() {
   };
 
   const getData = async () => {
-    await Axios.get("http://localhost:5000/")
+    await Axios.get(`${backendUrl}`)
 
       .then((response) => {
         setListing(response.data);

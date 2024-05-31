@@ -28,10 +28,12 @@ function Listing() {
     rating: "3",
   });
 
+  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
+
   const { id } = useParams();
   const getListing = async () => {
     try {
-      await Axios.get(`http://localhost:5000/${id}`).then(
+      await Axios.get(`${backendUrl}/${id}`).then(
         (response) => {
           // console.log(response.data);
           setListing(response.data);
@@ -48,7 +50,7 @@ function Listing() {
   const navigate = useNavigate();
   const handelDelete = async (id) => {
     try {
-      await Axios.delete(`http://localhost:5000/${id}`, {
+      await Axios.delete(`${backendUrl}/${id}`, {
         withCredentials: true,
       }).then((response) => {
         navigate("/");
@@ -67,7 +69,7 @@ function Listing() {
   };
 
   const handelSubmit = async () => {
-    await Axios.post(`http://localhost:5000/${id}/review`, userReview, {
+    await Axios.post(`${backendUrl}/${id}/review`, userReview, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -86,7 +88,7 @@ function Listing() {
     // console.log("id : ",reviewId)
     try {
       await Axios.delete(
-        `http://localhost:5000/${id}/review/${reviewId}`,
+        `${backendUrl}/${id}/review/${reviewId}`,
         {
           withCredentials: true,
         }

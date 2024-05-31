@@ -10,6 +10,8 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
+
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
@@ -17,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     // console.log(data);
     try {
-    await Axios.post("http://localhost:5000/login"
+    await Axios.post(`${backendUrl}/login`
     , data,{
         headers: {
           "Content-Type": "application/json",

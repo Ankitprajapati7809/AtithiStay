@@ -16,6 +16,7 @@ function Header() {
   const [user, setUser] = useState(null);
 
   Axios.defaults.withCredentials = true;
+  const backendUrl = process.env.VITE_ATITHISTAY_BACKEND_URL;
 
   useEffect(() => {
     getUser();
@@ -24,7 +25,7 @@ function Header() {
 
   const getUser = async () => {
     try {         
-       const resp = await Axios.get("http://localhost:5000/verify/checkAuth");
+       const resp = await Axios.get(`${backendUrl}/verify/checkAuth`);
       //  console.log(resp);
       setUser(resp.data);
     } catch (err) {
@@ -34,7 +35,7 @@ function Header() {
 
   const getresult = async () => {
     try {
-      const resp = await Axios.get("http://localhost:5000/");
+      const resp = await Axios.get(`${backendUrl}/`);
       setData(resp.data);
     } catch (err) {
       console.log(err);
@@ -80,7 +81,7 @@ function Header() {
   };
 
   const handelLogout = async () => {
-    const response = await Axios.get("http://localhost:5000/api/logout");
+    const response = await Axios.get(`${backendUrl}/api/logout`);
     showSuccessMessage(response.data);
     navigate("/"); 
   };
