@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://atithistay.vercel.app"],
+    origin: ["http://localhost:5173"],
     credentials: true,
   })
 );    
@@ -28,10 +28,14 @@ app.get("/verify/checkauth", (req, res)=>{
   res.send(token);
 })   
  
-app.all("*", (req, resp)=>{
-  resp.send("page not found")
-})
+// app.use(("*"), (req, resp,next)=>{
+//   resp.send("page not found")
+// })
 
+// app.use((err,req,resp,next)=>{
+//   let{statusCode=500,message="Somthing went wrong!"}=err;
+//   resp.status(statusCode).send("error.ejs",{message} );
+// });
 
 app.listen(5000, function () {
   console.log("Server is running on port 5000...");
