@@ -35,7 +35,7 @@ function Header() {
 
   const getresult = async () => {
     try {
-      const resp = await Axios.get(`${backendUrl}/`);
+      const resp = await Axios.get(`${backendUrl}`);
       setData(resp.data);
     } catch (err) {
       console.log(err);

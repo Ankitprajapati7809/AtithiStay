@@ -44,8 +44,8 @@ module.exports.registerUser = async (req, res) => {
   res.cookie("authToken", token, {
     maxAge: 20 * 24 * 60 * 60 * 1000,
     httpOnly: true,
-    secure: true,
-    // sameSite: "strict",
+    secure: process.env.NODE_ENV === 'production', 
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
   });
     return res.status(201).json(savedUser);
   } catch (err) {
@@ -86,8 +86,8 @@ module.exports.loginUser = async (req, res) => {
   res.cookie("authToken", token, {
     maxAge: 20 * 24 * 60 * 60 * 1000,
     httpOnly: true,
-    secure: true,
-    // sameSite: "strict",
+    secure: process.env.NODE_ENV === 'production', 
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
   });
 
   res.json("Login successfull");
