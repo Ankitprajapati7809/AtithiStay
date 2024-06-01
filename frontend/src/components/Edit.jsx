@@ -129,6 +129,7 @@ function Edit() {
           </label>
           <input
             type="text"
+            id="exampleInputEmail1"
             className="form-control"
             placeholder="enter a catchy title"
             name="title"
@@ -142,6 +143,7 @@ function Edit() {
           </label>
           <textarea
             type="text"
+            id="exampleInputEmail2"
             className="form-control"
             placeholder="enter description"
             name="description"
@@ -150,7 +152,7 @@ function Edit() {
           />
         </div>
         <div className="originlListing">
-          <label htmlFor="exampleInputEmail3" className="form-label">
+          <label className="form-label">
             Original Image
           </label>
           <div className="card" style={{ width: "16rem" }}>
@@ -167,6 +169,7 @@ function Edit() {
           </label>
           <input
             type="file"
+            id="exampleInputEmail3"
             className="form-control"
             name="image"
             // value={listingData?.image}
@@ -181,6 +184,7 @@ function Edit() {
             </label>
             <input
               type="number"
+              id="exampleInputPassword1"
               className="form-control"
               placeholder="1500"
               name="price"
@@ -194,6 +198,7 @@ function Edit() {
             </label>
             <input
               type="text"
+              id="exampleInputPassword2"
               className="form-control"
               placeholder="Bharat"
               name="country"
@@ -208,6 +213,7 @@ function Edit() {
           </label>
           <input
             type="text"
+            id="exampleInputPassword3"
             className="form-control"
             placeholder="noida,Uttarpradesh"
             name="location"

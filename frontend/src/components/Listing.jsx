@@ -217,8 +217,9 @@ function Listing() {
               </label>
             </fieldset>
             <br />
-            <p>Comments</p>
+            <label htmlFor="comment" className="mb-2">Comments</label>
             <textarea
+            id="comment"
               className="form-control mb-3"
               name="review"
               value={userReview.review}

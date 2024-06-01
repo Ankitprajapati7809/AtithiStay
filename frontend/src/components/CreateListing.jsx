@@ -104,6 +104,7 @@ const CreateListing = () => {
           </label>
           <input
             type="text"
+            id="exampleInputEmail1"
             className="form-control"
             placeholder="enter a catchy title"
             name="title"
@@ -119,6 +120,7 @@ const CreateListing = () => {
           </label>
           <textarea
             className="form-control"
+            id="exampleInputEmail2"
             placeholder="enter description"
             name="description"
             value={listingData.description}
@@ -132,6 +134,7 @@ const CreateListing = () => {
             Image
           </label>
           <input
+          id="exampleInputEmail3"
             type="file"
             className="form-control"
             name="image"
@@ -145,6 +148,7 @@ const CreateListing = () => {
             Price
           </label>
           <input
+          id="exampleInputPassword1"
             type="number"
             className="form-control"
             placeholder="1500"
@@ -160,6 +164,7 @@ const CreateListing = () => {
             Country
           </label>
           <input
+          id="exampleInputPassword2"
             type="text"
             className="form-control"
             placeholder="Bharat"
@@ -175,6 +180,7 @@ const CreateListing = () => {
             Location
           </label>
           <input
+          id="exampleInputPassword3"
             type="text"
             className="form-control"
             placeholder="noida,Uttarpradesh"
@@ -186,10 +192,10 @@ const CreateListing = () => {
           <div className="invalid-feedback">Please provide a location.</div>
         </div>
         <div className="mb-4">
-          <label htmlFor="exampleInputPassword3" className="form-label">
+          <label className="form-label">
           Which of these best describes your place?
           </label>
-            <div className="elements " >
+            <div className="elements ">
             <input  type="radio" className="btn-check" name="place" id="option5" autoComplete="off" value="Rooms"  onChange={handelChange} required/>
             <label className="btn btn-style" htmlFor="option5"><BedIcon className="icon-style"/><p className="text-style">Rooms</p></label>
 
