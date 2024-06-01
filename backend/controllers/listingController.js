@@ -32,7 +32,7 @@ module.exports.addedNewListing = async (req, resp) => {
     (newListing.owner = req.user.userId), (newListing.image = { url });
     const savingListing = await newListing.save();
     // console.log(savingListing);
-    resp.status(200).json(savingListing);
+    resp.status(200).json("Listing Added successfully.");
   } catch (error) {
     console.log(error);
     resp.status(400).json({ error: error.message });

@@ -14,6 +14,11 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./CreateListing.css"
 import {backendUrl} from "../../url";
+import {
+  showSuccessMessage,
+  showErrorMessage,
+  showInfoMessage,
+} from "./flashMessages";
 
 const CreateListing = () => {
   const [validated, setValidated] = useState(false);
@@ -46,7 +51,7 @@ const CreateListing = () => {
     }
     setValidated(true); 
     try {
-      console.log(listingData)
+      // console.log(listingData)
       setLoading(true);
       const response = await Axios.post(
         `${backendUrl}/`,
@@ -60,7 +65,7 @@ const CreateListing = () => {
       );
       navigate("/");
       // console.log("111111111111111")
-      console.log(response.data);
+      showSuccessMessage(response.data);
       setLoading(false);
     } catch (error) {
       console.log(error);

@@ -28,7 +28,7 @@ const SignUp = () => {
         },
       });
       navigate("/");
-      showSuccessMessage("You are successfully registed!");
+      showSuccessMessage("You are registed successfully!");
       
     } catch (error) {
       console.error("An error occurred:", error);
