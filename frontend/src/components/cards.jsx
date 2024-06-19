@@ -9,7 +9,8 @@ import {backendUrl} from "../../url";
 function Cards() {
   const [searchResult, setSearchResult] = useState([]);
   const [allListing, setListing] = useState([]);
-  const[filterResult, setfilterResult] = useState([]);
+  const [filterResult, setfilterResult] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
   const location = useLocation();
 
   function setPlace(data){
@@ -49,6 +50,8 @@ function Cards() {
 
       .then((response) => {
         setListing(response.data);
+        setisLoading(false)
+
         // console.log(response.data);
       })
       .catch((err) => {
@@ -59,20 +62,38 @@ function Cards() {
   useEffect(() => {
     getData();
   }, []);
+  // Function to render skeleton cards
+  // const renderSkeletonCards = (count) => {
+  //   return Array.from({ length: count }).map((_, index) => (
+  //     <Grid item key={index} xs={10} sm={6} md={4} lg={3}>
+  //       <SkeletonTheme baseColor="#202020" highlightColor="#f5f5f5">
+  //         <Card sx={{ px: 1.5, boxShadow: "green" }} className="card-skeleton">
+  //           <Skeleton height={210} style={{ borderRadius: "1.5rem" }} />
+  //           <Skeleton height={20} width="60%" count={3}/>
+  //           <Skeleton height={20} width="40%" />
+  //         </Card>
+  //       </SkeletonTheme>
+  //     </Grid>
+  //   ));
+  // };
 
   return (
     <Container sx={{ marginTop: 3, padding: 0 }}>
 
       <FiltersIcon setPlace={setPlace} />
-
       <Grid container sx={{ marginTop: 3 }}>
-        {(filterResult.length > 0 ? filterResult : (searchResult.length > 0 ? searchResult : allListing)).map(
+      {isLoading ? (
+          // renderSkeletonCards(8) // Show 8 skeleton cards while loading
+          <div className="loader offset-6 mt-5"></div>
+        ) : (
+        (filterResult.length > 0 ? filterResult : (searchResult.length > 0 ? searchResult : allListing)).map(
           (listing) => (
             <Grid item key={listing._id} xs={12} sm={6} md={4} lg={3}>
               <Link
                 to={`/${listing._id}`}
                 style={{ textDecoration: "none" }}
               >
+                
                 <Card sx={{ px: 1.5, boxShadow: "none" }} className="cardstyle">
                   <CardMedia
                     sx={{ borderRadius: "1.5rem" }}
@@ -90,8 +111,10 @@ function Cards() {
                 </Card>
               </Link>
             </Grid>
-          )
+          ))
         )}
+        {/* <div class="loader"></div> */}
+
       </Grid>
     </Container>
   );

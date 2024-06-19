@@ -15,7 +15,7 @@ app.use(
     origin: ["https://atithistay.vercel.app"],
     credentials: true,
   })
-);    
+);     
 
 app.use("/", listingRoutes); 
 app.use("/search", searchRoutes);
